@@ -27,11 +27,14 @@ module.exports = async (req, res) => {
   let target;
   try { target = new URL(q.get('u')); } catch { return res.writeHead(400).end(); }
   if (target.protocol !== 'https:' || !IMG_HOSTS.has(target.hostname)) return res.writeHead(403).end();
-  const w = Number(q.get('w'));
+  const w = Number(q.get('w')), trim = q.get('trim') === '1';
   try {
     const { body, type } = await download(target);
     if (sharp && WIDTHS.has(w)) {
-      const out = await sharp(body).resize({ width: w, withoutEnlargement: true }).webp({ quality: 75, effort: 4 }).toBuffer();
+      // trim=1 crops the plain border around product photos (official pack images are square with lots of margin)
+      let img = sharp(body);
+      if (trim) img = sharp(await img.trim({ threshold: 12 }).toBuffer());
+      const out = await img.resize({ width: w, withoutEnlargement: true }).webp({ quality: 75, effort: 4 }).toBuffer();
       return res.writeHead(200, { 'Content-Type': 'image/webp', 'Cache-Control': CACHE }).end(out);
     }
     res.writeHead(200, { 'Content-Type': type, 'Cache-Control': CACHE }).end(body);

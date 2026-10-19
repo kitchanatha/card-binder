@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "node server.js",
     "update-op-sets": "node tools/scrape-op-sets.js",
+    "update-pokemon-packs": "node tools/build-pokemon-packs.js",
     "warm-images": "node tools/warm-op-images.js"
   },
   "engines": {

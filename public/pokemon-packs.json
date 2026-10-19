@@ -1,0 +1,1602 @@
+{
+ "en": {
+  "base1": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/138130_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/185731_200w.jpg",
+   "name": "Base Set Booster Pack [Revised Unlimited Edition]",
+   "productId": 138130,
+   "group": "Base Set"
+  },
+  "neo1": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/138141_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/193334_200w.jpg",
+   "name": "Neo Genesis Booster Pack [1st Edition]",
+   "productId": 138141,
+   "group": "Neo Genesis"
+  },
+  "base2": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/138128_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/107598_200w.jpg",
+   "name": "Jungle Booster Pack [1st Edition]",
+   "productId": 138128,
+   "group": "Jungle"
+  },
+  "base3": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/138133_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/107601_200w.jpg",
+   "name": "Fossil Booster Pack [1st Edition]",
+   "productId": 138133,
+   "group": "Fossil"
+  },
+  "base5": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/138136_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/209436_200w.jpg",
+   "name": "Team Rocket Booster Pack [1st Edition]",
+   "productId": 138136,
+   "group": "Team Rocket"
+  },
+  "gym2": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/138140_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/276588_200w.jpg",
+   "name": "Gym Challenge Booster Pack [1st Edition]",
+   "productId": 138140,
+   "group": "Gym Challenge"
+  },
+  "gym1": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/138137_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/208707_200w.jpg",
+   "name": "Gym Heroes Booster Pack [1st Edition]",
+   "productId": 138137,
+   "group": "Gym Heroes"
+  },
+  "neo2": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/138144_200w.jpg",
+   "box": null,
+   "name": "Neo Discovery Booster Pack [1st Edition]",
+   "productId": 138144,
+   "group": "Neo Discovery"
+  },
+  "neo3": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/138145_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/634445_200w.jpg",
+   "name": "Neo Revelation Booster Pack [1st Edition]",
+   "productId": 138145,
+   "group": "Neo Revelation"
+  },
+  "lc": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/138150_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/691155_200w.jpg",
+   "name": "Legendary Collection Booster Pack",
+   "productId": 138150,
+   "group": "Legendary Collection"
+  },
+  "neo4": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/138148_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/563754_200w.jpg",
+   "name": "Neo Destiny Booster Pack [1st Edition]",
+   "productId": 138148,
+   "group": "Neo Destiny"
+  },
+  "ecard1": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/138151_200w.jpg",
+   "box": null,
+   "name": "Expedition Booster Pack",
+   "productId": 138151,
+   "group": "Expedition"
+  },
+  "ecard2": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/138152_200w.jpg",
+   "box": null,
+   "name": "Aquapolis Booster Pack",
+   "productId": 138152,
+   "group": "Aquapolis"
+  },
+  "ecard3": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/138153_200w.jpg",
+   "box": null,
+   "name": "Skyridge Booster Pack",
+   "productId": 138153,
+   "group": "Skyridge"
+  },
+  "ex1": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98558_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98559_200w.jpg",
+   "name": "Ruby and Sapphire Booster Pack",
+   "productId": 98558,
+   "group": "EX Ruby and Sapphire"
+  },
+  "ex3": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98519_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98518_200w.jpg",
+   "name": "EX Dragon Booster Pack",
+   "productId": 98519,
+   "group": "EX Dragon"
+  },
+  "ex2": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98565_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98564_200w.jpg",
+   "name": "Sandstorm Booster Pack",
+   "productId": 98565,
+   "group": "EX Sandstorm"
+  },
+  "ex4": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98550_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98551_200w.jpg",
+   "name": "Team Magma vs Team Aqua Booster Pack",
+   "productId": 98550,
+   "group": "EX Team Magma vs Team Aqua"
+  },
+  "ex5": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98595_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98596_200w.jpg",
+   "name": "Hidden Legends Booster Pack",
+   "productId": 98595,
+   "group": "EX Hidden Legends"
+  },
+  "ex6": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98946_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98945_200w.jpg",
+   "name": "FireRed & LeafGreen Booster Pack",
+   "productId": 98946,
+   "group": "EX FireRed & LeafGreen"
+  },
+  "ex7": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/138136_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/209436_200w.jpg",
+   "name": "Team Rocket Booster Pack [1st Edition]",
+   "productId": 138136,
+   "group": "Team Rocket"
+  },
+  "ex9": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98546_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98547_200w.jpg",
+   "name": "Emerald Booster Pack",
+   "productId": 98546,
+   "group": "EX Emerald"
+  },
+  "ex8": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98562_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98563_200w.jpg",
+   "name": "Deoxys Booster Pack",
+   "productId": 98562,
+   "group": "EX Deoxys"
+  },
+  "ex10": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98577_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98576_200w.jpg",
+   "name": "Unseen Forces Booster Pack",
+   "productId": 98577,
+   "group": "EX Unseen Forces"
+  },
+  "exu": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98577_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98576_200w.jpg",
+   "name": "Unseen Forces Booster Pack",
+   "productId": 98577,
+   "group": "EX Unseen Forces"
+  },
+  "ex11": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98944_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98943_200w.jpg",
+   "name": "Delta Species Booster Pack",
+   "productId": 98944,
+   "group": "EX Delta Species"
+  },
+  "ex12": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98557_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98556_200w.jpg",
+   "name": "Legend Maker Booster Pack",
+   "productId": 98557,
+   "group": "EX Legend Maker"
+  },
+  "ex13": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98522_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98523_200w.jpg",
+   "name": "Holon Phantoms Booster Pack",
+   "productId": 98522,
+   "group": "EX Holon Phantoms"
+  },
+  "ex14": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98566_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98567_200w.jpg",
+   "name": "Crystal Guardians Booster Pack",
+   "productId": 98566,
+   "group": "EX Crystal Guardians"
+  },
+  "ex15": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98533_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98532_200w.jpg",
+   "name": "Dragon Frontiers Booster Pack",
+   "productId": 98533,
+   "group": "EX Dragon Frontiers"
+  },
+  "ex16": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98529_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98528_200w.jpg",
+   "name": "Power Keepers Booster Pack",
+   "productId": 98529,
+   "group": "EX Power Keepers"
+  },
+  "dp1": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98525_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98524_200w.jpg",
+   "name": "Diamond and Pearl Booster Pack",
+   "productId": 98525,
+   "group": "Diamond and Pearl"
+  },
+  "dp2": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98561_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98560_200w.jpg",
+   "name": "Mysterious Treasures Booster Pack",
+   "productId": 98561,
+   "group": "Mysterious Treasures"
+  },
+  "dp5": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98585_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98584_200w.jpg",
+   "name": "Majestic Dawn Booster Pack",
+   "productId": 98585,
+   "group": "Majestic Dawn"
+  },
+  "dp3": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98569_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98568_200w.jpg",
+   "name": "Secret Wonders Booster Pack",
+   "productId": 98569,
+   "group": "Secret Wonders"
+  },
+  "dp4": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98545_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98544_200w.jpg",
+   "name": "Great Encounters Booster Pack",
+   "productId": 98545,
+   "group": "Great Encounters"
+  },
+  "dp6": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98537_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98536_200w.jpg",
+   "name": "Legends Awakened Booster Pack",
+   "productId": 98537,
+   "group": "Legends Awakened"
+  },
+  "dp7": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98589_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98588_200w.jpg",
+   "name": "Stormfront Booster Pack",
+   "productId": 98589,
+   "group": "Stormfront"
+  },
+  "pl2": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98542_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98543_200w.jpg",
+   "name": "Rising Rivals Booster Pack",
+   "productId": 98542,
+   "group": "Rising Rivals"
+  },
+  "pl1": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98591_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98592_200w.jpg",
+   "name": "Platinum Booster Pack",
+   "productId": 98591,
+   "group": "Platinum"
+  },
+  "pl3": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98574_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98575_200w.jpg",
+   "name": "Supreme Victors Booster Pack",
+   "productId": 98574,
+   "group": "Supreme Victors"
+  },
+  "pl4": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98594_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98593_200w.jpg",
+   "name": "Arceus Booster Pack",
+   "productId": 98594,
+   "group": "Arceus"
+  },
+  "hgss1": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98530_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98531_200w.jpg",
+   "name": "HeartGold SoulSilver Booster Pack",
+   "productId": 98530,
+   "group": "HeartGold SoulSilver"
+  },
+  "hgss2": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98582_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98583_200w.jpg",
+   "name": "Unleashed Booster Pack",
+   "productId": 98582,
+   "group": "Unleashed"
+  },
+  "hgss3": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98586_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98587_200w.jpg",
+   "name": "Undaunted Booster Pack",
+   "productId": 98586,
+   "group": "Undaunted"
+  },
+  "col1": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98515_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98514_200w.jpg",
+   "name": "Call of Legends Booster Pack",
+   "productId": 98515,
+   "group": "Call of Legends"
+  },
+  "hgss4": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98534_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98535_200w.jpg",
+   "name": "Triumphant Booster Pack",
+   "productId": 98534,
+   "group": "Triumphant"
+  },
+  "bw2": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98549_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98548_200w.jpg",
+   "name": "Emerging Powers Booster Pack",
+   "productId": 98549,
+   "group": "Emerging Powers"
+  },
+  "bw3": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98570_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98571_200w.jpg",
+   "name": "Noble Victories Booster Pack",
+   "productId": 98570,
+   "group": "Noble Victories"
+  },
+  "dv1": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98948_200w.jpg",
+   "box": null,
+   "name": "Dragon Vault Booster Pack",
+   "productId": 98948,
+   "group": "Dragon Vault"
+  },
+  "bw4": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98538_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98539_200w.jpg",
+   "name": "Next Destinies Booster Pack",
+   "productId": 98538,
+   "group": "Next Destinies"
+  },
+  "bw5": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98521_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98520_200w.jpg",
+   "name": "Dark Explorers Booster Pack",
+   "productId": 98521,
+   "group": "Dark Explorers"
+  },
+  "bw6": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98541_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98540_200w.jpg",
+   "name": "Dragons Exalted Booster Pack",
+   "productId": 98541,
+   "group": "Dragons Exalted"
+  },
+  "bw8": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98526_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98527_200w.jpg",
+   "name": "Plasma Storm Booster Pack",
+   "productId": 98526,
+   "group": "Plasma Storm"
+  },
+  "bw7": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98554_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98555_200w.jpg",
+   "name": "Boundaries Crossed Booster Pack",
+   "productId": 98554,
+   "group": "Boundaries Crossed"
+  },
+  "bw9": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98517_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98516_200w.jpg",
+   "name": "Plasma Freeze Booster Pack",
+   "productId": 98517,
+   "group": "Plasma Freeze"
+  },
+  "bw10": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98573_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98572_200w.jpg",
+   "name": "Plasma Blast Booster Pack",
+   "productId": 98573,
+   "group": "Plasma Blast"
+  },
+  "bw11": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/98581_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98580_200w.jpg",
+   "name": "Legendary Treasures Booster Pack",
+   "productId": 98581,
+   "group": "Legendary Treasures"
+  },
+  "xy1": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/91602_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/91601_200w.jpg",
+   "name": "XY Booster Pack",
+   "productId": 91602,
+   "group": "XY Base Set"
+  },
+  "xy2": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/91595_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/91594_200w.jpg",
+   "name": "Flashfire Booster Pack",
+   "productId": 91595,
+   "group": "XY - Flashfire"
+  },
+  "xy3": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/92169_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/92168_200w.jpg",
+   "name": "Furious Fists Booster Pack",
+   "productId": 92169,
+   "group": "XY - Furious Fists"
+  },
+  "dc1": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/229226_200w.jpg",
+   "box": null,
+   "name": "Double Crisis Booster Pack",
+   "productId": 229226,
+   "group": "Double Crisis"
+  },
+  "xy5": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/97751_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/97750_200w.jpg",
+   "name": "XY Primal Clash Booster Pack",
+   "productId": 97751,
+   "group": "XY - Primal Clash"
+  },
+  "xy4": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/94622_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/94623_200w.jpg",
+   "name": "XY Phantom Forces Booster Pack",
+   "productId": 94622,
+   "group": "XY - Phantom Forces"
+  },
+  "xy6": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/129906_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/98026_200w.jpg",
+   "name": "Roaring Skies Booster Pack",
+   "productId": 129906,
+   "group": "XY - Roaring Skies"
+  },
+  "xy7": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/100490_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/100489_200w.jpg",
+   "name": "XY Ancient Origins Booster Pack",
+   "productId": 100490,
+   "group": "XY - Ancient Origins"
+  },
+  "xy9": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/111279_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/111278_200w.jpg",
+   "name": "XY BREAKpoint Booster Pack",
+   "productId": 111279,
+   "group": "XY - BREAKpoint"
+  },
+  "xy8": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/107666_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/107101_200w.jpg",
+   "name": "XY BREAKthrough Booster Pack",
+   "productId": 107666,
+   "group": "XY - BREAKthrough"
+  },
+  "g1": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/187238_200w.jpg",
+   "box": null,
+   "name": "Generations Booster Pack",
+   "productId": 187238,
+   "group": "Generations"
+  },
+  "xy10": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/168114_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/117478_200w.jpg",
+   "name": "XY Fates Collide Booster Pack",
+   "productId": 168114,
+   "group": "XY - Fates Collide"
+  },
+  "xy11": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/130013_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/120076_200w.jpg",
+   "name": "Steam Siege Booster Pack",
+   "productId": 130013,
+   "group": "XY - Steam Siege"
+  },
+  "xy12": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/129907_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/123446_200w.jpg",
+   "name": "Evolutions Booster Pack",
+   "productId": 129907,
+   "group": "XY - Evolutions"
+  },
+  "sm2": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/129889_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/129888_200w.jpg",
+   "name": "Guardians Rising Booster Pack",
+   "productId": 129889,
+   "group": "SM - Guardians Rising"
+  },
+  "sm3.5": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/155880_200w.jpg",
+   "box": null,
+   "name": "Shining Legends Booster Pack",
+   "productId": 155880,
+   "group": "Shining Legends"
+  },
+  "sm3": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/133774_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/133773_200w.jpg",
+   "name": "Burning Shadows Booster Pack",
+   "productId": 133774,
+   "group": "SM - Burning Shadows"
+  },
+  "sm4": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/146996_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/146995_200w.jpg",
+   "name": "Crimson Invasion Booster Pack",
+   "productId": 146996,
+   "group": "SM - Crimson Invasion"
+  },
+  "sm5": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/155662_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/155661_200w.jpg",
+   "name": "Ultra Prism Booster Pack",
+   "productId": 155662,
+   "group": "SM - Ultra Prism"
+  },
+  "sm6": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/164297_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/164296_200w.jpg",
+   "name": "Forbidden Light Booster Pack",
+   "productId": 164297,
+   "group": "SM - Forbidden Light"
+  },
+  "sm7.5": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/173392_200w.jpg",
+   "box": null,
+   "name": "Dragon Majesty Booster Pack",
+   "productId": 173392,
+   "group": "Dragon Majesty"
+  },
+  "sm7": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/170274_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/170273_200w.jpg",
+   "name": "Celestial Storm Booster Pack",
+   "productId": 170274,
+   "group": "SM - Celestial Storm"
+  },
+  "sm8": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/175510_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/175509_200w.jpg",
+   "name": "Lost Thunder Booster Pack",
+   "productId": 175510,
+   "group": "SM - Lost Thunder"
+  },
+  "sm9": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/181699_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/181698_200w.jpg",
+   "name": "Team Up Booster Pack",
+   "productId": 181699,
+   "group": "SM - Team Up"
+  },
+  "sm10": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/185718_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/185717_200w.jpg",
+   "name": "Unbroken Bonds Booster Pack",
+   "productId": 185718,
+   "group": "SM - Unbroken Bonds"
+  },
+  "sma": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/198634_200w.jpg",
+   "box": null,
+   "name": "Hidden Fates Booster Pack",
+   "productId": 198634,
+   "group": "Hidden Fates"
+  },
+  "sm11": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/191883_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/191882_200w.jpg",
+   "name": "Unified Minds Booster Pack",
+   "productId": 191883,
+   "group": "SM - Unified Minds"
+  },
+  "sm115": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/198634_200w.jpg",
+   "box": null,
+   "name": "Hidden Fates Booster Pack",
+   "productId": 198634,
+   "group": "Hidden Fates"
+  },
+  "sm12": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/199263_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/199261_200w.jpg",
+   "name": "Cosmic Eclipse Booster Pack",
+   "productId": 199263,
+   "group": "SM - Cosmic Eclipse"
+  },
+  "swsh1": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/206028_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/206027_200w.jpg",
+   "name": "Sword & Shield Booster Pack",
+   "productId": 206028,
+   "group": "SWSH01: Sword & Shield Base Set"
+  },
+  "swsh3.5": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/218789_200w.jpg",
+   "box": null,
+   "name": "Champion's Path Booster Pack",
+   "productId": 218789,
+   "group": "Champion's Path"
+  },
+  "swsh2": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/210562_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/210561_200w.jpg",
+   "name": "Rebel Clash Booster Pack",
+   "productId": 210562,
+   "group": "SWSH02: Rebel Clash"
+  },
+  "swsh3": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/216852_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/216853_200w.jpg",
+   "name": "Darkness Ablaze Booster Pack",
+   "productId": 216852,
+   "group": "SWSH03: Darkness Ablaze"
+  },
+  "swsh4": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/221312_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/221313_200w.jpg",
+   "name": "Vivid Voltage Booster Pack",
+   "productId": 221312,
+   "group": "SWSH04: Vivid Voltage"
+  },
+  "swsh4.5": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/232636_200w.jpg",
+   "box": null,
+   "name": "Shining Fates Booster Pack",
+   "productId": 232636,
+   "group": "Shining Fates"
+  },
+  "swsh6": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/236257_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/236258_200w.jpg",
+   "name": "Chilling Reign Booster Pack",
+   "productId": 236257,
+   "group": "SWSH06: Chilling Reign"
+  },
+  "swsh7": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/244337_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/242436_200w.jpg",
+   "name": "Evolving Skies Booster Pack",
+   "productId": 244337,
+   "group": "SWSH07: Evolving Skies"
+  },
+  "cel25cc": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/248577_200w.jpg",
+   "box": null,
+   "name": "Celebrations Booster Pack",
+   "productId": 248577,
+   "group": "Celebrations"
+  },
+  "cel25": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/248577_200w.jpg",
+   "box": null,
+   "name": "Celebrations Booster Pack",
+   "productId": 248577,
+   "group": "Celebrations"
+  },
+  "swsh8": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/247646_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/247654_200w.jpg",
+   "name": "Fusion Strike Booster Pack",
+   "productId": 247646,
+   "group": "SWSH08: Fusion Strike"
+  },
+  "swsh9tg": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/256124_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/256141_200w.jpg",
+   "name": "Brilliant Stars Booster Pack",
+   "productId": 256124,
+   "group": "SWSH09: Brilliant Stars"
+  },
+  "swsh9": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/256124_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/256141_200w.jpg",
+   "name": "Brilliant Stars Booster Pack",
+   "productId": 256124,
+   "group": "SWSH09: Brilliant Stars"
+  },
+  "swsh10": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/265521_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/265519_200w.jpg",
+   "name": "Astral Radiance Booster Pack",
+   "productId": 265521,
+   "group": "SWSH10: Astral Radiance"
+  },
+  "swsh10.5": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/274421_200w.jpg",
+   "box": null,
+   "name": "Pokemon GO Booster Pack",
+   "productId": 274421,
+   "group": "Pokemon GO"
+  },
+  "swsh11": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/277325_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/277324_200w.jpg",
+   "name": "Lost Origin Booster Pack",
+   "productId": 277325,
+   "group": "SWSH11: Lost Origin"
+  },
+  "swsh12": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/283388_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/283389_200w.jpg",
+   "name": "Silver Tempest Booster Pack",
+   "productId": 283388,
+   "group": "SWSH12: Silver Tempest"
+  },
+  "swsh12.5": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/453466_200w.jpg",
+   "box": null,
+   "name": "Crown Zenith Booster Pack",
+   "productId": 453466,
+   "group": "SWSH: Crown Zenith"
+  },
+  "sv01": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/476451_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/476452_200w.jpg",
+   "name": "Scarlet & Violet Booster Pack",
+   "productId": 476451,
+   "group": "SV01: Scarlet & Violet Base Set"
+  },
+  "sv02": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/493976_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/493975_200w.jpg",
+   "name": "Paldea Evolved Booster Pack",
+   "productId": 493976,
+   "group": "SV02: Paldea Evolved"
+  },
+  "sv03": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/501256_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/501257_200w.jpg",
+   "name": "Obsidian Flames Booster Pack",
+   "productId": 501256,
+   "group": "SV03: Obsidian Flames"
+  },
+  "sv03.5": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/504467_200w.jpg",
+   "box": null,
+   "name": "151 Booster Pack",
+   "productId": 504467,
+   "group": "SV: Scarlet & Violet 151"
+  },
+  "sv04": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/512822_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/512821_200w.jpg",
+   "name": "Paradox Rift Booster Pack",
+   "productId": 512822,
+   "group": "SV04: Paradox Rift"
+  },
+  "sv04.5": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/528038_200w.jpg",
+   "box": null,
+   "name": "Paldean Fates Booster Pack",
+   "productId": 528038,
+   "group": "SV: Paldean Fates"
+  },
+  "sv05": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/532841_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/536225_200w.jpg",
+   "name": "Temporal Forces Booster Pack",
+   "productId": 532841,
+   "group": "SV05: Temporal Forces"
+  },
+  "sv06.5": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/552997_200w.jpg",
+   "box": null,
+   "name": "Shrouded Fable Booster Pack",
+   "productId": 552997,
+   "group": "SV: Shrouded Fable"
+  },
+  "sv06": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/543843_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/543846_200w.jpg",
+   "name": "Twilight Masquerade Booster Pack",
+   "productId": 543843,
+   "group": "SV06: Twilight Masquerade"
+  },
+  "sv07": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/557331_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/557354_200w.jpg",
+   "name": "Stellar Crown Booster Pack",
+   "productId": 557331,
+   "group": "SV07: Stellar Crown"
+  },
+  "sv08": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565604_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565606_200w.jpg",
+   "name": "Surging Sparks Booster Pack",
+   "productId": 565604,
+   "group": "SV08: Surging Sparks"
+  },
+  "sv08.5": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/593294_200w.jpg",
+   "box": null,
+   "name": "Prismatic Evolutions Booster Pack",
+   "productId": 593294,
+   "group": "SV: Prismatic Evolutions"
+  },
+  "sv09": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/610935_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/610931_200w.jpg",
+   "name": "Journey Together Booster Pack",
+   "productId": 610935,
+   "group": "SV09: Journey Together"
+  },
+  "sv10": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/624683_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/624679_200w.jpg",
+   "name": "Destined Rivals Booster Pack",
+   "productId": 624683,
+   "group": "SV10: Destined Rivals"
+  },
+  "sv10.5b": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/630434_200w.jpg",
+   "box": null,
+   "name": "Black Bolt Booster Pack",
+   "productId": 630434,
+   "group": "SV: Black Bolt"
+  },
+  "sv10.5w": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/630699_200w.jpg",
+   "box": null,
+   "name": "White Flare Booster Pack",
+   "productId": 630699,
+   "group": "SV: White Flare"
+  },
+  "me01": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/644352_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/644298_200w.jpg",
+   "name": "Mega Evolution Booster Pack",
+   "productId": 644352,
+   "group": "ME01: Mega Evolution"
+  },
+  "me02": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/654144_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/654137_200w.jpg",
+   "name": "Phantasmal Flames Booster Pack",
+   "productId": 654144,
+   "group": "ME02: Phantasmal Flames"
+  },
+  "me03": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/672398_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/672394_200w.jpg",
+   "name": "Perfect Order Booster Pack",
+   "productId": 672398,
+   "group": "ME03: Perfect Order"
+  },
+  "me05": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/692944_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/692939_200w.jpg",
+   "name": "Pitch Black Booster Pack",
+   "productId": 692944,
+   "group": "ME05: Pitch Black"
+  },
+  "me04": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/684446_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/684444_200w.jpg",
+   "name": "Chaos Rising Booster Pack",
+   "productId": 684446,
+   "group": "ME04: Chaos Rising"
+  },
+  "me02.5": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/672434_200w.jpg",
+   "box": null,
+   "name": "Ascended Heroes Booster Pack",
+   "productId": 672434,
+   "group": "ME: Ascended Heroes"
+  },
+  "30th": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/696613_200w.jpg",
+   "box": null,
+   "name": "30th Celebration Booster Pack",
+   "productId": 696613,
+   "group": "ME: 30th Celebration"
+  },
+  "30th-c": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/696613_200w.jpg",
+   "box": null,
+   "name": "30th Celebration Booster Pack",
+   "productId": 696613,
+   "group": "ME: 30th Celebration"
+  }
+ },
+ "ja": {
+  "CP6": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/722950_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/660024_200w.jpg",
+   "name": "Expansion Pack 20th Anniversary Booster Pack (1st Edition)",
+   "productId": 722950,
+   "group": "CP6: Expansion Pack 20th Anniversary"
+  },
+  "SM1S": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576854_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576855_200w.jpg",
+   "name": "Collection Sun Booster Pack",
+   "productId": 576854,
+   "group": "SM1S: Collection Sun"
+  },
+  "SM2L": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576860_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576861_200w.jpg",
+   "name": "Alolan Moonlight Booster Pack",
+   "productId": 576860,
+   "group": "SM2L: Alolan Moonlight"
+  },
+  "sm2+": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576922_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576923_200w.jpg",
+   "name": "Facing a New Trial Booster Pack",
+   "productId": 576922,
+   "group": "SM2+: Facing a New Trial"
+  },
+  "SM1M": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576856_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576857_200w.jpg",
+   "name": "Collection Moon Booster Pack",
+   "productId": 576856,
+   "group": "SM1M: Collection Moon"
+  },
+  "SM3+": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576924_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576925_200w.jpg",
+   "name": "Shining Legends Booster Pack",
+   "productId": 576924,
+   "group": "SM3+: Shining Legends"
+  },
+  "SM2K": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576858_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576859_200w.jpg",
+   "name": "Islands Await You Booster Pack",
+   "productId": 576858,
+   "group": "SM2K: Islands Await You"
+  },
+  "SM3N": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576866_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576867_200w.jpg",
+   "name": "Darkness that Consumes Light Booster Pack",
+   "productId": 576866,
+   "group": "SM3N: Darkness that Consumes Light"
+  },
+  "SM4S": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576868_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576897_200w.jpg",
+   "name": "Awakened Heroes Booster Pack",
+   "productId": 576868,
+   "group": "SM4S: Awakened Heroes"
+  },
+  "SM3H": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576863_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576865_200w.jpg",
+   "name": "To Have Seen the Battle Rainbow Booster Pack",
+   "productId": 576863,
+   "group": "SM3H: To Have Seen the Battle Rainbow"
+  },
+  "SM5S": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576901_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576902_200w.jpg",
+   "name": "Ultra Sun Booster Pack",
+   "productId": 576901,
+   "group": "SM5S: Ultra Sun"
+  },
+  "SM5M": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576903_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576904_200w.jpg",
+   "name": "Ultra Moon Booster Pack",
+   "productId": 576903,
+   "group": "SM5M: Ultra Moon"
+  },
+  "SM4A": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576898_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576899_200w.jpg",
+   "name": "Ultradimensional Beasts Booster Pack",
+   "productId": 576898,
+   "group": "SM4A: Ultradimensional Beasts"
+  },
+  "SM4+": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576958_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576959_200w.jpg",
+   "name": "GX Battle Boost Booster Pack",
+   "productId": 576958,
+   "group": "SM4+: GX Battle Boost"
+  },
+  "SM6a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576928_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576929_200w.jpg",
+   "name": "Dragon Storm Booster Pack",
+   "productId": 576928,
+   "group": "SM6a: Dragon Storm"
+  },
+  "SM5+": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576926_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576927_200w.jpg",
+   "name": "Ultra Force Booster Pack",
+   "productId": 576926,
+   "group": "SM5+: Ultra Force"
+  },
+  "SM6": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576905_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576906_200w.jpg",
+   "name": "Forbidden Light Booster Pack",
+   "productId": 576905,
+   "group": "SM6: Forbidden Light"
+  },
+  "SM6b": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576930_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576931_200w.jpg",
+   "name": "Champion Road Booster Pack",
+   "productId": 576930,
+   "group": "SM6b: Champion Road"
+  },
+  "SM7": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576907_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576908_200w.jpg",
+   "name": "Sky-Splitting Charisma Booster Pack",
+   "productId": 576907,
+   "group": "SM7: Sky-Splitting Charisma"
+  },
+  "SM8b": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576960_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576961_200w.jpg",
+   "name": "GX Ultra Shiny Booster Pack",
+   "productId": 576960,
+   "group": "SM8b: GX Ultra Shiny"
+  },
+  "SM7a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576932_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576940_200w.jpg",
+   "name": "Thunderclap Spark Booster Pack",
+   "productId": 576932,
+   "group": "SM7a: Thunderclap Spark"
+  },
+  "SM7b": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576941_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576942_200w.jpg",
+   "name": "Fairy Rise Booster Pack",
+   "productId": 576941,
+   "group": "SM7b: Fairy Rise"
+  },
+  "SM8": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576909_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576910_200w.jpg",
+   "name": "Super-Burst Impact Booster Pack",
+   "productId": 576909,
+   "group": "SM8: Super-Burst Impact"
+  },
+  "SM8a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576943_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576944_200w.jpg",
+   "name": "Dark Order Booster Pack",
+   "productId": 576943,
+   "group": "SM8a: Dark Order"
+  },
+  "SM9b": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576947_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576948_200w.jpg",
+   "name": "Full Metal Wall Booster Pack",
+   "productId": 576947,
+   "group": "SM9b: Full Metal Wall"
+  },
+  "SM10": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576913_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576914_200w.jpg",
+   "name": "Double Blaze Booster Pack",
+   "productId": 576913,
+   "group": "SM10: Double Blaze"
+  },
+  "SM9a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576945_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576946_200w.jpg",
+   "name": "Night Unison Booster Pack",
+   "productId": 576945,
+   "group": "SM9a: Night Unison"
+  },
+  "SM9": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576911_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576912_200w.jpg",
+   "name": "Tag Bolt Booster Pack",
+   "productId": 576911,
+   "group": "SM9: Tag Bolt"
+  },
+  "SMP2": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/656885_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/656901_200w.jpg",
+   "name": "Great Detective Pikachu Booster Pack",
+   "productId": 656885,
+   "group": "smP2: Great Detective Pikachu"
+  },
+  "SM10a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576950_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576951_200w.jpg",
+   "name": "GG End Booster Pack",
+   "productId": 576950,
+   "group": "SM10a: GG End"
+  },
+  "SM10b": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576952_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576953_200w.jpg",
+   "name": "Sky Legend Booster Pack",
+   "productId": 576952,
+   "group": "SM10b: Sky Legend"
+  },
+  "SM11a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576954_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576955_200w.jpg",
+   "name": "Remix Bout Booster Pack",
+   "productId": 576954,
+   "group": "SM11a: Remix Bout"
+  },
+  "SM11": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576916_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576917_200w.jpg",
+   "name": "Miracle Twin Booster Pack",
+   "productId": 576916,
+   "group": "SM11: Miracle Twin"
+  },
+  "SM11b": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576956_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576957_200w.jpg",
+   "name": "Dream League Booster Pack",
+   "productId": 576956,
+   "group": "SM11b: Dream League"
+  },
+  "SM12": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576918_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576919_200w.jpg",
+   "name": "Alter Genesis Booster Pack",
+   "productId": 576918,
+   "group": "SM12: Alter Genesis"
+  },
+  "SM12a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/576963_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/576964_200w.jpg",
+   "name": "TAG TEAM GX: Tag All Stars Booster Pack",
+   "productId": 576963,
+   "group": "SM12a: TAG TEAM GX: Tag All Stars"
+  },
+  "S1W": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/574619_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/574796_200w.jpg",
+   "name": "Sword Booster Pack",
+   "productId": 574619,
+   "group": "S1W: Sword"
+  },
+  "S1H": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/574870_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/574871_200w.jpg",
+   "name": "Shield Booster Pack",
+   "productId": 574870,
+   "group": "S1H: Shield"
+  },
+  "S1a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/574872_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/574874_200w.jpg",
+   "name": "VMAX Rising Booster Pack",
+   "productId": 574872,
+   "group": "S1a: VMAX Rising"
+  },
+  "S2": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/574176_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/574371_200w.jpg",
+   "name": "Rebellion Crash Booster Pack",
+   "productId": 574176,
+   "group": "S2: Rebellion Crash"
+  },
+  "S3": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/571837_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/571838_200w.jpg",
+   "name": "Infinity Zone Booster Pack",
+   "productId": 571837,
+   "group": "S3: Infinity Zone"
+  },
+  "S3a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/571834_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/571836_200w.jpg",
+   "name": "Legendary Heartbeat Booster Pack",
+   "productId": 571834,
+   "group": "S3a: Legendary Heartbeat"
+  },
+  "S6K": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565346_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565347_200w.jpg",
+   "name": "Jet-Black Spirit Booster Pack",
+   "productId": 565346,
+   "group": "S6K: Jet-Black Spirit"
+  },
+  "S8b": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565258_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565259_200w.jpg",
+   "name": "VMAX Climax Booster Pack",
+   "productId": 565258,
+   "group": "S8b: VMAX Climax"
+  },
+  "S5a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565363_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565362_200w.jpg",
+   "name": "Peerless Fighters Master Booster Pack",
+   "productId": 565363,
+   "group": "S5a: Peerless Fighters"
+  },
+  "S10b": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/575039_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/575040_200w.jpg",
+   "name": "Pokemon GO Booster Pack",
+   "productId": 575039,
+   "group": "S10b: Pokemon GO"
+  },
+  "S10D": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/571833_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/571832_200w.jpg",
+   "name": "Time Gazer Booster Pack",
+   "productId": 571833,
+   "group": "S10D: Time Gazer"
+  },
+  "S9a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565254_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565255_200w.jpg",
+   "name": "Battle Region Booster Pack",
+   "productId": 565254,
+   "group": "S9a: Battle Region"
+  },
+  "S5I": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565360_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565361_200w.jpg",
+   "name": "Single Strike Master Booster Pack",
+   "productId": 565360,
+   "group": "S5I: Single Strike Master"
+  },
+  "S4a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565366_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565369_200w.jpg",
+   "name": "Shiny Star V Booster Pack",
+   "productId": 565366,
+   "group": "S4a: Shiny Star V"
+  },
+  "S10a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/575041_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/575042_200w.jpg",
+   "name": "Dark Phantasma Booster Pack",
+   "productId": 575041,
+   "group": "S10a: Dark Phantasma"
+  },
+  "S8a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565261_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565260_200w.jpg",
+   "name": "25th Anniversary Collection Booster Pack",
+   "productId": 565261,
+   "group": "S8a: 25th Anniversary Collection"
+  },
+  "S6H": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565349_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565348_200w.jpg",
+   "name": "Silver Lance Booster Pack",
+   "productId": 565349,
+   "group": "S6H: Silver Lance"
+  },
+  "S12a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565253_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565252_200w.jpg",
+   "name": "VSTAR Universe Booster Pack",
+   "productId": 565253,
+   "group": "S12a: VSTAR Universe"
+  },
+  "S11": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/574878_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/574954_200w.jpg",
+   "name": "Lost Abyss Booster Pack",
+   "productId": 574878,
+   "group": "S11: Lost Abyss"
+  },
+  "S11a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/574875_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/574876_200w.jpg",
+   "name": "Incandescent Arcana Booster Pack",
+   "productId": 574875,
+   "group": "S11a: Incandescent Arcana"
+  },
+  "S7R": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565342_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565343_200w.jpg",
+   "name": "Blue Sky Stream Booster Pack",
+   "productId": 565342,
+   "group": "S7R: Blue Sky Stream"
+  },
+  "S9": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565257_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565256_200w.jpg",
+   "name": "Star Birth Booster Pack",
+   "productId": 565257,
+   "group": "S9: Star Birth"
+  },
+  "S5R": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565359_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565358_200w.jpg",
+   "name": "Rapid Strike Master Booster Pack",
+   "productId": 565359,
+   "group": "S5R: Rapid Strike Master"
+  },
+  "S7D": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565345_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565344_200w.jpg",
+   "name": "Skyscraping Perfection Booster Pack",
+   "productId": 565345,
+   "group": "S7D: Skyscraping Perfection"
+  },
+  "S2a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/571839_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/571840_200w.jpg",
+   "name": "Explosive Walker Booster Pack",
+   "productId": 571839,
+   "group": "S2a: Explosive Walker"
+  },
+  "S4": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565374_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565373_200w.jpg",
+   "name": "Amazing Volt Tackle Booster Pack",
+   "productId": 565374,
+   "group": "S4: Amazing Volt Tackle"
+  },
+  "S6a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565350_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565351_200w.jpg",
+   "name": "Eevee Heroes Booster Pack",
+   "productId": 565350,
+   "group": "S6a: Eevee Heroes"
+  },
+  "S8": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565263_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565262_200w.jpg",
+   "name": "Fusion Arts Booster Pack",
+   "productId": 565263,
+   "group": "S8: Fusion Arts"
+  },
+  "SV1V": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565245_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565244_200w.jpg",
+   "name": "Violet ex Booster Pack",
+   "productId": 565245,
+   "group": "SV1V: Violet ex"
+  },
+  "S12": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565251_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565250_200w.jpg",
+   "name": "Paradigm Trigger Booster Pack",
+   "productId": 565251,
+   "group": "S12: Paradigm Trigger"
+  },
+  "SV11B": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/636736_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/637384_200w.jpg",
+   "name": "Black Bolt Booster Pack",
+   "productId": 636736,
+   "group": "SV11B: Black Bolt"
+  },
+  "SV9": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/614703_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/614707_200w.jpg",
+   "name": "Battle Partner Booster Pack",
+   "productId": 614703,
+   "group": "SV9: Battle Partners"
+  },
+  "SV4M": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565229_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565228_200w.jpg",
+   "name": "Future Flash Booster Pack",
+   "productId": 565229,
+   "group": "SV4M: Future Flash"
+  },
+  "SV4a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565233_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565232_200w.jpg",
+   "name": "Shiny Treasure ex High Class Booster Pack",
+   "productId": 565233,
+   "group": "SV4a: Shiny Treasure ex"
+  },
+  "SV6": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565220_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565221_200w.jpg",
+   "name": "Transformation Mask Booster Pack",
+   "productId": 565220,
+   "group": "SV6: Transformation Mask"
+  },
+  "SV3a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565234_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565235_200w.jpg",
+   "name": "Raging Surf Booster Pack",
+   "productId": 565234,
+   "group": "SV3a: Raging Surf"
+  },
+  "SV6a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565219_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565218_200w.jpg",
+   "name": "Night Wanderer Booster Pack",
+   "productId": 565219,
+   "group": "SV6a: Night Wanderer"
+  },
+  "SV5a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565227_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565226_200w.jpg",
+   "name": "Crimson Haze Booster Pack",
+   "productId": 565227,
+   "group": "SV5a: Crimson Haze"
+  },
+  "SV3": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565237_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565236_200w.jpg",
+   "name": "Ruler of the Black Flame Booster Pack",
+   "productId": 565237,
+   "group": "SV3: Ruler of the Black Flame"
+  },
+  "SV9a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/623311_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/623310_200w.jpg",
+   "name": "Heat Wave Arena Booster Pack",
+   "productId": 623311,
+   "group": "SV9a: Heat Wave Arena"
+  },
+  "SV8a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/603429_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/603428_200w.jpg",
+   "name": "Terastal Fest ex Booster Pack",
+   "productId": 603429,
+   "group": "SV8a: Terastal Fest ex"
+  },
+  "SV1a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565249_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565248_200w.jpg",
+   "name": "Triple Beat Booster Pack",
+   "productId": 565249,
+   "group": "SV1a: Triplet Beat"
+  },
+  "S10P": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/575035_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/575036_200w.jpg",
+   "name": "Space Juggler Booster Pack",
+   "productId": 575035,
+   "group": "S10P: Space Juggler"
+  },
+  "SV2P": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565238_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565239_200w.jpg",
+   "name": "Snow Hazard Booster Pack",
+   "productId": 565238,
+   "group": "SV2P: Snow Hazard"
+  },
+  "SV7": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565216_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565217_200w.jpg",
+   "name": "Stellar Miracle Booster Pack",
+   "productId": 565216,
+   "group": "SV7: Stellar Miracle"
+  },
+  "SV2a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565242_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565243_200w.jpg",
+   "name": "Pokemon Card 151 Booster Pack",
+   "productId": 565242,
+   "group": "SV2a: Pokemon Card 151"
+  },
+  "SV5M": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565223_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565222_200w.jpg",
+   "name": "Cyber Judge Booster Pack",
+   "productId": 565223,
+   "group": "SV5M: Cyber Judge"
+  },
+  "SV10": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/629198_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/629197_200w.jpg",
+   "name": "Glory of Team Rocket Booster Pack",
+   "productId": 629198,
+   "group": "SV10: The Glory of Team Rocket"
+  },
+  "SV7a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/580710_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/580709_200w.jpg",
+   "name": "Paradise Dragona Booster Pack",
+   "productId": 580710,
+   "group": "SV7a: Paradise Dragona"
+  },
+  "SV1S": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565246_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565247_200w.jpg",
+   "name": "Scarlet ex Booster Pack",
+   "productId": 565246,
+   "group": "SV1S: Scarlet ex"
+  },
+  "SV8": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/587727_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/587728_200w.jpg",
+   "name": "Super Electric Breaker Booster Pack",
+   "productId": 587727,
+   "group": "SV8: Super Electric Breaker"
+  },
+  "SV4K": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565230_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565231_200w.jpg",
+   "name": "Ancient Roar Booster Pack",
+   "productId": 565230,
+   "group": "SV4K: Ancient Roar"
+  },
+  "SV11W": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/636737_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/637386_200w.jpg",
+   "name": "White Flare Booster Pack",
+   "productId": 636737,
+   "group": "SV11W: White Flare"
+  },
+  "SV5K": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565224_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565225_200w.jpg",
+   "name": "Wild Force Booster Pack",
+   "productId": 565224,
+   "group": "SV5K: Wild Force"
+  },
+  "SV2D": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/565241_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/565240_200w.jpg",
+   "name": "Clay Burst Booster Pack",
+   "productId": 565241,
+   "group": "SV2D: Clay Burst"
+  },
+  "M1L": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/647498_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/647500_200w.jpg",
+   "name": "Mega Brave Booster Pack",
+   "productId": 647498,
+   "group": "m1L: Mega Brave"
+  },
+  "M2a": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/666255_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/666254_200w.jpg",
+   "name": "Mega Dream ex Booster Pack",
+   "productId": 666255,
+   "group": "M2a: High Class Pack: MEGA Dream ex"
+  },
+  "M3": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/674454_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/674449_200w.jpg",
+   "name": "Nihil Zero Booster Pack",
+   "productId": 674454,
+   "group": "M3: Nihil Zero"
+  },
+  "M6": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/709111_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/709110_200w.jpg",
+   "name": "Storm Emeralda Booster Pack",
+   "productId": 709111,
+   "group": "M6: Storm Emeralda"
+  },
+  "M5": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/695111_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/695112_200w.jpg",
+   "name": "Abyss Eye Booster Pack",
+   "productId": 695111,
+   "group": "M5: Abyss Eye"
+  },
+  "M2": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/655970_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/655968_200w.jpg",
+   "name": "Inferno X Booster Pack",
+   "productId": 655970,
+   "group": "M2: Inferno X"
+  },
+  "M1S": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/647499_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/647501_200w.jpg",
+   "name": "Mega Symphonia Booster Pack",
+   "productId": 647499,
+   "group": "m1S: Mega Symphonia"
+  },
+  "M4": {
+   "pack": "https://tcgplayer-cdn.tcgplayer.com/product/683776_200w.jpg",
+   "box": "https://tcgplayer-cdn.tcgplayer.com/product/683774_200w.jpg",
+   "name": "Ninja Spinner Booster Pack",
+   "productId": 683776,
+   "group": "M4: Ninja Spinner"
+  }
+ }
+}
