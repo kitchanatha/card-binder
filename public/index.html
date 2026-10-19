@@ -40,7 +40,14 @@
   .games { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
   .game { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 22px; box-shadow: var(--shadow); transition: transform .15s; }
   .game:hover { transform: translateY(-2px); border-color: var(--accent); }
-  .game .emoji { font-size: 34px; }
+  /* original game icons (inline SVG): a two-tone ball for Pokémon, a straw hat for ONE PIECE */
+  .gicon { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 14px; background: var(--surface-2); }
+  .gicon svg { width: 40px; height: 40px; display: block; }
+  .gicon.sm { width: 38px; height: 38px; border-radius: 10px; flex: 0 0 auto; }
+  .gicon.sm svg { width: 28px; height: 28px; }
+  .gtitle { display: flex; align-items: center; gap: 12px; }
+  .game:hover .gicon svg { transform: rotate(-8deg) scale(1.06); }
+  @media (prefers-reduced-motion: no-preference) { .gicon svg { transition: transform .2s ease; } }
   .game h2 { margin: 8px 0 4px; font-size: 20px; }
   .game p { margin: 0; color: var(--muted); font-size: 14px; }
 
@@ -684,7 +691,7 @@ const topByPrice = cards => cards.filter(c => c.price?.main > 0).sort((a, b) => 
 
 const GAMES = {
   pokemon: {
-    emoji: '⚡', name: { en: 'Pokémon', ja: 'ポケモン' }, desc: 'pokemonDesc',
+    icon: `<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="#fbfaf7"/><path d="M3 24a21 21 0 0 1 42 0z" fill="#e3350d"/><path d="M8 13.5a19 19 0 0 1 11-8" stroke="#fff" stroke-opacity=".55" stroke-width="3" stroke-linecap="round" fill="none"/><circle cx="24" cy="24" r="21" fill="none" stroke="#222" stroke-width="3"/><path d="M3 24h13.5M31.5 24H45" stroke="#222" stroke-width="3"/><circle cx="24" cy="24" r="7" fill="#fbfaf7" stroke="#222" stroke-width="3"/><circle cx="24" cy="24" r="2.8" fill="#fbfaf7" stroke="#222" stroke-width="1.5"/></svg>`, name: { en: 'Pokémon', ja: 'ポケモン' }, desc: 'pokemonDesc',
     async sets() {
       const [list, pocket, dates, packs] = await Promise.all([
         getJSON(`https://api.tcgdex.net/v2/${TCGDEX[lang]}/sets`),
@@ -767,7 +774,7 @@ const GAMES = {
     },
   },
   onepiece: {
-    emoji: '🏴‍☠️', name: { en: 'ONE PIECE', ja: 'ワンピース' }, desc: 'onepieceDesc',
+    icon: `<svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="31" rx="21.5" ry="8.5" fill="#e9c46a" stroke="#8a6420" stroke-width="2"/><path d="M11.5 30.5C11.5 17 17 11 24 11s12.5 6 12.5 19.5c-7 3-18 3-25 0z" fill="#f2d385" stroke="#8a6420" stroke-width="2" stroke-linejoin="round"/><path d="M12 25.5c7.5 3 16.5 3 24 0l.4 5c-7.6 3-16.8 3-24.8 0z" fill="#d1392b"/><path d="M17 16.5l2.5 3M24 13.5v3.5M31 16.5l-2.5 3M6 31.5l3 1.2M42 31.5l-3 1.2M15 36.5l1.5 1.5M33 36.5l-1.5 1.5" stroke="#b8902e" stroke-width="1.4" stroke-linecap="round"/></svg>`, name: { en: 'ONE PIECE', ja: 'ワンピース' }, desc: 'onepieceDesc',
     async sets() {
       const [packs, official] = await Promise.all([getJSON(`${PUNK}/english/packs.json`), opOfficial()]);
       const { prefix } = PUNK_LANG[lang], tbl = official[lang] || {};
@@ -873,7 +880,7 @@ function parseHash() { return location.hash.replace(/^#\/?/, '').split('/').filt
 function renderHome() {
   app.innerHTML = `<h1>${t('pickGame')}</h1><p class="sub">${t('pickGameSub')}</p>
     <div class="games">${Object.entries(GAMES).map(([k, g]) => `
-      <a class="game" href="#/${k}"><div class="emoji">${g.emoji}</div><h2>${esc(g.name[lang])}</h2><p>${t(g.desc)}</p></a>`).join('')}
+      <a class="game" href="#/${k}"><div class="gicon">${g.icon}</div><h2>${esc(g.name[lang])}</h2><p>${t(g.desc)}</p></a>`).join('')}
     </div><p class="note">${t('dataNote')}</p>`;
 }
 
@@ -884,7 +891,7 @@ async function renderSets(gameKey) {
   const owned = getOwned(gameKey);
   const ownedBySet = id => [...owned].filter(x => x.startsWith(id + '|')).length;
   app.innerHTML = `<div class="crumbs"><a href="#/">${t('home')}</a> ›</div>
-    <h1>${esc(g.name[lang])}</h1><p class="sub">${sets.length} ${t('sets')}</p>
+    <h1 class="gtitle"><span class="gicon sm">${g.icon}</span>${esc(g.name[lang])}</h1><p class="sub">${sets.length} ${t('sets')}</p>
     <div class="toolbar"><input class="search" id="q" placeholder="${t('searchSetsCards')}" value="${esc(load('q:' + gameKey, ''))}"></div>
     <div class="sets" id="list"></div><section class="cardhits" id="hits" hidden></section>`;
   const list = document.getElementById('list'), q = document.getElementById('q'), hits = document.getElementById('hits');
