@@ -136,6 +136,32 @@
   dialog::backdrop { background: rgba(0,0,0,.6); }
   .detail { display: grid; grid-template-columns: minmax(0, 320px) 1fr; gap: 24px; padding: 24px; }
   .detail img { width: 100%; border-radius: 12px; display: block; }
+  .zoomable { position: relative; display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 12px; }
+  .zoomable:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .zoomhint { position: absolute; right: 8px; bottom: 8px; font-size: 12px; font-weight: 600; color: #fff;
+    background: rgba(0,0,0,.65); padding: 4px 9px; border-radius: 999px; opacity: .85; transition: opacity .15s; }
+  .zoomable:hover .zoomhint { opacity: 1; }
+
+  /* full-screen zoom viewer: always dark, whatever the theme */
+  .viewer { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; border-radius: 0;
+    background: rgba(10,10,12,.94); color: #f1efe9; overflow: hidden; }
+  .viewer::backdrop { background: transparent; }
+  .vstage { position: absolute; inset: 0; display: grid; place-items: center; touch-action: none; cursor: zoom-in;
+    padding: max(56px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 96px max(16px, env(safe-area-inset-left, 0px)); }
+  .viewer.zoomed .vstage { cursor: grab; }
+  .viewer.zoomed .vstage:active { cursor: grabbing; }
+  .vimg { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 14px; user-select: none; -webkit-user-drag: none;
+    transform-origin: center; will-change: transform; box-shadow: 0 10px 40px rgba(0,0,0,.5); }
+  .vbar { position: absolute; left: 50%; transform: translateX(-50%); bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    display: flex; align-items: center; gap: 4px; background: rgba(40,40,44,.92); border-radius: 999px; padding: 4px; }
+  .vbar button { border: 0; background: transparent; color: #f1efe9; min-width: 40px; height: 40px; border-radius: 999px;
+    font-size: 18px; font-weight: 600; cursor: pointer; padding: 0 12px; }
+  .vbar button[data-v="fit"] { font-size: 13px; }
+  .vbar button:hover, .vbar button:focus-visible { background: rgba(255,255,255,.14); outline: none; }
+  .vzoom { min-width: 52px; text-align: center; font-size: 13px; font-variant-numeric: tabular-nums; color: #c9c5bc; }
+  .vhint { position: absolute; left: 0; right: 0; top: calc(16px + env(safe-area-inset-top, 0px)); margin: 0; text-align: center;
+    font-size: 12px; color: #a29d93; pointer-events: none; padding: 0 16px; }
+  @media (prefers-reduced-motion: no-preference) { .vimg { transition: transform .08s ease-out; } }
   .detail h2 { margin: 0 0 4px; font-size: 22px; }
   .detail dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 14px; margin: 14px 0; }
   .detail dt { color: var(--muted); }
@@ -164,6 +190,7 @@
 </header>
 <main id="app"></main>
 <dialog id="modal"></dialog>
+<dialog id="viewer" class="viewer" aria-label="Card image"></dialog>
 
 <script>
 // ---------- i18n: add a language by adding one entry here + data mappings below ----------
@@ -194,6 +221,8 @@ const I18N = {
     ebaySold: 'eBay sold', mercariSold: 'Mercari sold',
     topTitle: 'Most valuable', topLoading: 'Finding the most valuable cards…', tcgEnEdition: 'TCGplayer (English edition)',
     psaMarket: 'Market price (last 7 days)', psaUp: 'Trending up', psaDown: 'Trending down', psaStable: 'Stable',
+    viewFull: 'Full image', zoomIn: 'Zoom in', zoomOut: 'Zoom out', zoomFit: 'Fit', close: 'Close',
+    zoomHint: 'Scroll, pinch or double-click to zoom · drag to move', zoomHintTouch: 'Pinch or double-tap to zoom · drag to move', fullLoading: 'loading full resolution…',
     psaAvg: 'Average, all tracked sales', psaMedian: 'Median, all tracked sales', psaSales: 'Sales tracked', psaLast: 'Last sale', psaLinks: 'See the individual sold listings:',
     'psa_not-found': 'Couldn’t match this card in the PSA price data.', 'psa_no-psa10-sales': 'No recent PSA 10 sales found.',
     'psa_bad-key': 'The PSA price API key was rejected.', psa_limit: 'Daily PSA price lookups used up. Try again tomorrow.',
@@ -226,6 +255,8 @@ const I18N = {
     ebaySold: 'eBay 落札済み', mercariSold: 'メルカリ 売り切れ',
     topTitle: '高額カード', topLoading: '高額カードを集計中…', tcgEnEdition: 'TCGplayer（英語版の相場）',
     psaMarket: '相場（直近7日）', psaUp: '上昇傾向', psaDown: '下降傾向', psaStable: '横ばい',
+    viewFull: '拡大表示', zoomIn: '拡大', zoomOut: '縮小', zoomFit: '全体', close: '閉じる',
+    zoomHint: 'スクロール・ピンチ・ダブルクリックで拡大 · ドラッグで移動', zoomHintTouch: 'ピンチ・ダブルタップで拡大 · ドラッグで移動', fullLoading: '高解像度を読み込み中…',
     psaAvg: '平均（全成約）', psaMedian: '中央値（全成約）', psaSales: '集計件数', psaLast: '最終成約日', psaLinks: '個別の成約履歴はこちら:',
     'psa_not-found': 'PSA 価格データでこのカードが見つかりませんでした。', 'psa_no-psa10-sales': '最近の PSA10 の成約はありません。',
     'psa_bad-key': 'PSA 価格 API キーが無効です。', psa_limit: '本日の PSA 価格の取得上限に達しました。明日またお試しください。',
@@ -281,7 +312,8 @@ const opOfficial = () => getJSON('op-sets.json').catch(() => ({ ja: {}, en: {} }
 const opJaCode = code => code.replace(/^OP(\d+)-EB\d+$/, 'OP-$1');
 // Official ONE PIECE images block cross-site embedding, so route them through api/img.js
 // and shrink them: the originals are ~1.7 MB print-size PNGs (w=240 grid ≈ 20 KB, w=640 detail)
-const opImg = (u, w) => u ? `api/img?u=${encodeURIComponent(u)}&w=${w}` : null;
+// (no w = the full-size original, only fetched when someone opens the zoom viewer)
+const opImg = (u, w) => u ? `api/img?u=${encodeURIComponent(u)}${w ? `&w=${w}` : ''}` : null;
 
 // TCGdex lags on images for brand-new English sets; fall back to pokemontcg.io / Scrydex.
 // Match the set by release date + closest card count, then cards by name (reprint sets keep their
@@ -496,7 +528,7 @@ const GAMES = {
       const prefixes = [...new Set(raw.map(c => c.id.split('-')[0]))];
       const cards = raw.map(c => ({
         id: c.id, num: c.id.replace(/_p(\d+)$/, ''), name: c.name, alt: /_p\d+$/.test(c.id), rarity: c.rarity,
-        img: opImg(c.img_full_url, 240), imgHi: opImg(c.img_full_url, 640), raw: c,
+        img: opImg(c.img_full_url, 240), imgHi: opImg(c.img_full_url, 640), imgFull: opImg(c.img_full_url), raw: c,
       }));
       // TCGplayer market price via optcgapi (one request per set; ids match punk-records).
       // Only the English edition is priced, so Japanese cards borrow the English price, labelled as such.
@@ -699,6 +731,93 @@ async function loadPsa10(q) {
   }
 }
 
+// ---------- full-screen zoom viewer ----------
+// Shows the detail image at once, swaps in the full-size original when it arrives (ONE PIECE),
+// and zooms toward the cursor / pinch point: wheel, pinch, double-click/tap, +/− keys or buttons.
+const viewer = document.getElementById('viewer');
+const vs = { s: 1, x: 0, y: 0, pts: new Map(), pinch: null, moved: false, lastTap: 0 };
+const MIN_Z = 1, MAX_Z = 6;
+function vApply() {
+  const img = viewer.querySelector('.vimg');
+  if (img) img.style.transform = `translate(${vs.x}px, ${vs.y}px) scale(${vs.s})`;
+  const z = viewer.querySelector('.vzoom'); if (z) z.textContent = `${Math.round(vs.s * 100)}%`;
+  viewer.classList.toggle('zoomed', vs.s > 1);
+}
+// keep the image point under (px, py) fixed while changing scale; px/py are relative to the stage centre
+function vZoomAt(next, px = 0, py = 0) {
+  next = Math.min(MAX_Z, Math.max(MIN_Z, next));
+  vs.x = px - (px - vs.x) * next / vs.s; vs.y = py - (py - vs.y) * next / vs.s; vs.s = next;
+  if (vs.s === 1) vs.x = vs.y = 0;
+  vApply();
+}
+function vPoint(e) {
+  const r = viewer.querySelector('.vstage').getBoundingClientRect();
+  return [e.clientX - r.left - r.width / 2, e.clientY - r.top - r.height / 2];
+}
+function openViewer(src, full, name) {
+  Object.assign(vs, { s: 1, x: 0, y: 0, pinch: null }); vs.pts.clear();
+  viewer.innerHTML = `<div class="vstage"><img class="vimg" src="${esc(src)}" alt="${esc(name)}" draggable="false"></div>
+    <div class="vbar">
+      <button data-v="out" aria-label="${t('zoomOut')}">−</button><span class="vzoom">100%</span>
+      <button data-v="in" aria-label="${t('zoomIn')}">+</button><button data-v="fit">${t('zoomFit')}</button>
+      <button data-v="close" aria-label="${t('close')}">×</button>
+    </div>
+    <p class="vhint">${t(matchMedia('(pointer: coarse)').matches ? 'zoomHintTouch' : 'zoomHint')}${full && full !== src ? `<span class="vfull"> · ${t('fullLoading')}</span>` : ''}</p>`;
+  viewer.showModal(); vApply();
+  if (full && full !== src) {
+    const hi = new Image();
+    hi.onload = () => { const img = viewer.querySelector('.vimg'); if (img && viewer.open) img.src = full; viewer.querySelector('.vfull')?.remove(); };
+    hi.onerror = () => viewer.querySelector('.vfull')?.remove();
+    hi.src = full;
+  }
+}
+viewer.addEventListener('click', e => {
+  const b = e.target.closest('[data-v]');
+  if (b) return { in: () => vZoomAt(vs.s * 1.5), out: () => vZoomAt(vs.s / 1.5), fit: () => vZoomAt(1), close: () => viewer.close() }[b.dataset.v]();
+  // a plain click on the dark background closes it (not after a drag, not while zoomed)
+  if (e.target.classList.contains('vstage') && !vs.moved && vs.s === 1) viewer.close();
+});
+viewer.addEventListener('wheel', e => {
+  if (!e.target.closest('.vstage')) return;
+  e.preventDefault(); vZoomAt(vs.s * Math.exp(-e.deltaY * 0.0015), ...vPoint(e));
+}, { passive: false });
+viewer.addEventListener('keydown', e => {
+  if (e.key === '+' || e.key === '=') vZoomAt(vs.s * 1.5);
+  else if (e.key === '-') vZoomAt(vs.s / 1.5);
+  else if (e.key === '0') vZoomAt(1);
+});
+viewer.addEventListener('pointerdown', e => {
+  if (!e.target.closest('.vstage')) return;
+  e.target.setPointerCapture?.(e.pointerId);
+  vs.pts.set(e.pointerId, [e.clientX, e.clientY]); vs.moved = false;
+  if (vs.pts.size === 2) {
+    const [a, b] = [...vs.pts.values()];
+    vs.pinch = { d: Math.hypot(a[0] - b[0], a[1] - b[1]), s: vs.s };
+  }
+});
+viewer.addEventListener('pointermove', e => {
+  const prev = vs.pts.get(e.pointerId); if (!prev) return;
+  vs.pts.set(e.pointerId, [e.clientX, e.clientY]);
+  if (vs.pts.size === 2 && vs.pinch) {
+    const [a, b] = [...vs.pts.values()];
+    const mid = vPoint({ clientX: (a[0] + b[0]) / 2, clientY: (a[1] + b[1]) / 2 });
+    vZoomAt(vs.pinch.s * Math.hypot(a[0] - b[0], a[1] - b[1]) / vs.pinch.d, ...mid); vs.moved = true;
+  } else if (vs.pts.size === 1 && vs.s > 1) {
+    vs.x += e.clientX - prev[0]; vs.y += e.clientY - prev[1]; vs.moved = true; vApply();
+  }
+});
+const vUp = e => {
+  if (!vs.pts.delete(e.pointerId)) return;
+  if (vs.pts.size < 2) vs.pinch = null;
+  // double-tap / double-click toggles between fit and 2.5×
+  if (e.type === 'pointerup' && !vs.moved && e.target.closest('.vimg')) {
+    const now = Date.now();
+    if (now - vs.lastTap < 300) { vZoomAt(vs.s > 1 ? 1 : 2.5, ...vPoint(e)); vs.lastTap = 0; } else vs.lastTap = now;
+  }
+};
+viewer.addEventListener('pointerup', vUp);
+viewer.addEventListener('pointercancel', vUp);
+
 async function openDetail(g, gameKey, data, card, ownKey, onChange) {
   modal.innerHTML = `<div class="state"><div class="spin"></div>${t('loading')}</div>`; modal.showModal();
   let d; try { d = await g.detail(card); } catch (e) { modal.innerHTML = `<div class="state">${t('error')}</div>`; return; }
@@ -720,7 +839,9 @@ async function openDetail(g, gameKey, data, card, ownKey, onChange) {
   const btn = () => getOwned(gameKey).has(ownKey) ? `<button class="btn on" id="ob">${t('isOwned')}</button>` : `<button class="btn" id="ob">${t('markOwned')}</button>`;
   modal.innerHTML = `<button class="close" aria-label="Close" onclick="this.closest('dialog').close()">×</button>
     <div class="detail">
-      <div>${card.imgHi ? `<img src="${esc(card.imgHi)}" alt="${esc(d.name)}">` : `<div class="state">${t('noImage')}</div>`}</div>
+      <div>${card.imgHi ? `<button class="zoomable" id="zoomopen" aria-label="${t('viewFull')}">
+          <img src="${esc(card.imgHi)}" alt="${esc(d.name)}"><span class="zoomhint">⤢ ${t('viewFull')}</span></button>`
+        : `<div class="state">${t('noImage')}</div>`}</div>
       <div><h2>${esc(d.name)}</h2>
         <dl>${d.rows.filter(r => r[1] != null && r[1] !== '').map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
         ${price}${psa}${odds}
@@ -728,6 +849,7 @@ async function openDetail(g, gameKey, data, card, ownKey, onChange) {
         <p id="obw">${btn()}</p>
       </div></div>`;
   if (d.psa) loadPsa10(d.psa);
+  modal.querySelector('#zoomopen')?.addEventListener('click', () => openViewer(card.imgHi, card.imgFull, d.name));
   modal.querySelector('#obw').addEventListener('click', e => {
     if (e.target.id !== 'ob') return; toggleOwned(gameKey, ownKey);
     modal.querySelector('#obw').innerHTML = btn(); onChange();
@@ -735,7 +857,7 @@ async function openDetail(g, gameKey, data, card, ownKey, onChange) {
 }
 
 function route() {
-  chrome(); modal.open && modal.close(); window.scrollTo(0, 0);
+  chrome(); viewer.open && viewer.close(); modal.open && modal.close(); window.scrollTo(0, 0);
   const [game, set] = parseHash();
   if (!GAMES[game]) return renderHome();
   if (!set) return renderSets(game);
