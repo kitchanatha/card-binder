@@ -5,9 +5,13 @@
   "description": "Browse every Pokémon and ONE PIECE card in every set, in English and Japanese, and track your collection.",
   "scripts": {
     "dev": "node server.js",
-    "update-op-sets": "node tools/scrape-op-sets.js"
+    "update-op-sets": "node tools/scrape-op-sets.js",
+    "warm-images": "node tools/warm-op-images.js"
   },
   "engines": {
     "node": ">=20"
+  },
+  "dependencies": {
+    "sharp": "^0.33.5"
   }
 }

@@ -280,7 +280,8 @@ const opOfficial = () => getJSON('op-sets.json').catch(() => ({ ja: {}, en: {} }
 // "OP14-EB04" is how the English release is labelled; Japan released OP-14 and EB-04 separately
 const opJaCode = code => code.replace(/^OP(\d+)-EB\d+$/, 'OP-$1');
 // Official ONE PIECE images block cross-site embedding, so route them through api/img.js
-const opImg = u => u ? 'api/img?u=' + encodeURIComponent(u) : null;
+// and shrink them: the originals are ~1.7 MB print-size PNGs (w=240 grid ≈ 20 KB, w=640 detail)
+const opImg = (u, w) => u ? `api/img?u=${encodeURIComponent(u)}&w=${w}` : null;
 
 // TCGdex lags on images for brand-new English sets; fall back to pokemontcg.io / Scrydex.
 // Match the set by release date + closest card count, then cards by name (reprint sets keep their
@@ -495,7 +496,7 @@ const GAMES = {
       const prefixes = [...new Set(raw.map(c => c.id.split('-')[0]))];
       const cards = raw.map(c => ({
         id: c.id, num: c.id.replace(/_p(\d+)$/, ''), name: c.name, alt: /_p\d+$/.test(c.id), rarity: c.rarity,
-        img: opImg(c.img_full_url), imgHi: opImg(c.img_full_url), raw: c,
+        img: opImg(c.img_full_url, 240), imgHi: opImg(c.img_full_url, 640), raw: c,
       }));
       // TCGplayer market price via optcgapi (one request per set; ids match punk-records).
       // Only the English edition is priced, so Japanese cards borrow the English price, labelled as such.
