@@ -87,6 +87,11 @@
   .sethead > div { min-width: 0; }
   .packhero { width: 84px; max-height: 150px; object-fit: contain; flex: 0 0 auto; filter: drop-shadow(0 4px 10px rgba(0,0,0,.2)); }
   @media (max-width: 640px) { .packhero { width: 64px; } }
+  .cardhits { margin-top: 28px; }
+  .cardhits h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 12px; }
+  .cardhits h2 .n { color: var(--accent); margin-left: 4px; }
+  .cardhits .card { text-decoration: none; display: block; }
+  .inset { font-size: 11px; color: var(--muted); margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .top { margin: 0 0 20px; }
   .top h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 10px; }
   .topwait, .topnote { font-size: 12px; color: var(--muted); margin: 8px 0 0; }
@@ -222,6 +227,8 @@ const I18N = {
     brand: 'Card <span>Binder</span>', home: 'Games', pickGame: 'Choose a game',
     pickGameSub: 'Browse every card in every set. Tap ✓ to mark cards you own.',
     pokemonDesc: 'Pokémon Trading Card Game', onepieceDesc: 'ONE PIECE Card Game',
+    searchSetsCards: 'Search sets or card names…', cardsTitle: 'Cards', searching: 'Searching all sets…',
+    noCards: 'No cards with that name.', moreCards: 'Showing {n} of {m}. Type more of the name to narrow it down.',
     sets: 'Sets', cards: 'cards', searchSets: 'Search sets…', searchCards: 'Search cards by name or number…',
     all: 'All', owned: 'Owned', missing: 'Missing', loading: 'Loading…', error: 'Could not load data. Check your connection and try again.',
     noResults: 'No matches.', collected: 'collected', noImage: 'No image yet',
@@ -259,6 +266,8 @@ const I18N = {
     brand: 'カード<span>バインダー</span>', home: 'ゲーム', pickGame: 'ゲームを選択',
     pickGameSub: '全エキスパンションの全カードを閲覧。✓ で所持カードを記録できます。',
     pokemonDesc: 'ポケモンカードゲーム', onepieceDesc: 'ONE PIECEカードゲーム',
+    searchSetsCards: 'エキスパンション名・カード名で検索…', cardsTitle: 'カード', searching: '全エキスパンションを検索中…',
+    noCards: 'その名前のカードはありません。', moreCards: '{m} 件中 {n} 件を表示しています。名前をもう少し入力すると絞り込めます。',
     sets: 'エキスパンション', cards: '枚', searchSets: 'エキスパンションを検索…', searchCards: 'カード名・番号で検索…',
     all: 'すべて', owned: '所持', missing: '未所持', loading: '読み込み中…', error: 'データを読み込めませんでした。接続を確認してもう一度お試しください。',
     noResults: '該当なし', collected: '収集済み', noImage: '画像なし',
@@ -526,6 +535,17 @@ const GAMES = {
       }
       return topByPrice(data.cards);
     },
+    // TCGdex matches names anywhere in the word; a card id is "<setId>-<number>"
+    async searchCards(term, sets) {
+      const list = await getJSON(`https://api.tcgdex.net/v2/${TCGDEX[lang]}/cards?name=${encodeURIComponent(term)}`);
+      const byId = new Map(sets.map(s => [s.id, s]));
+      return list.map(c => {
+        const setId = c.id.slice(0, c.id.lastIndexOf('-')), s = byId.get(setId);   // drops TCG Pocket cards
+        // newest sets may lack TCGdex images; reuse the backup images a set page already found (ptcgImagesFor)
+        return s && { setId, setName: s.name, setCode: s.code, cardId: c.id, num: c.localId, name: c.name,
+          img: c.image ? c.image + '/low.webp' : load('ptcg:' + setId, {})?.[c.id]?.small || null };
+      }).filter(Boolean);
+    },
     async detail(card) {
       const c = await getJSON(`https://api.tcgdex.net/v2/${TCGDEX[lang]}/cards/${encodeURIComponent(card.id)}`);
       const rows = [
@@ -591,6 +611,18 @@ const GAMES = {
         }));
       return { name: null, code: prefixes.join(' / '), releaseDate: meta?.date, cards, later };
     },
+    // No search API exists, so search a prebuilt index of every card (tools/build-op-index.js), by name or number
+    async searchCards(term, sets) {
+      const idx = await getJSON(`op-cards-${lang}.json`);
+      const byId = new Map(sets.map(s => [s.id, s])), q = term.toLowerCase(), out = [];
+      for (const [id, name, pack, v] of idx.cards) {
+        if (!name.toLowerCase().includes(q) && !id.toLowerCase().includes(q)) continue;
+        const s = byId.get(pack); if (!s) continue;
+        out.push({ setId: pack, setName: s.name, setCode: s.code, cardId: id, num: id.replace(/_p\d+$/, ''), name,
+          alt: /_p\d+$/.test(id), img: opImg(idx.tpl.replace('{id}', id).replace('{v}', v), 240) });
+      }
+      return out;
+    },
     async detail(card) {
       const c = card.raw;
       return {
@@ -652,12 +684,37 @@ async function renderSets(gameKey) {
   const ownedBySet = id => [...owned].filter(x => x.startsWith(id + '|')).length;
   app.innerHTML = `<div class="crumbs"><a href="#/">${t('home')}</a> ›</div>
     <h1>${esc(g.name[lang])}</h1><p class="sub">${sets.length} ${t('sets')}</p>
-    <div class="toolbar"><input class="search" id="q" placeholder="${t('searchSets')}" value="${esc(load('q:' + gameKey, ''))}"></div>
-    <div class="sets" id="list"></div>`;
-  const list = document.getElementById('list'), q = document.getElementById('q');
+    <div class="toolbar"><input class="search" id="q" placeholder="${t('searchSetsCards')}" value="${esc(load('q:' + gameKey, ''))}"></div>
+    <div class="sets" id="list"></div><section class="cardhits" id="hits" hidden></section>`;
+  const list = document.getElementById('list'), q = document.getElementById('q'), hits = document.getElementById('hits');
+  // Card names across every set: searched after a short pause in typing, newest sets first
+  const order = new Map(sets.map((s, i) => [s.id, i]));
+  let searchSeq = 0, searchTimer;
+  const searchCards = term => {
+    clearTimeout(searchTimer);
+    const seq = ++searchSeq;
+    if (term.length < 2) { hits.hidden = true; return; }
+    hits.hidden = false; hits.innerHTML = `<h2>${t('cardsTitle')}</h2><p class="topwait">${t('searching')}</p>`;
+    searchTimer = setTimeout(async () => {
+      let found; try { found = await g.searchCards(term, sets); } catch { found = null; }
+      if (seq !== searchSeq || tok !== renderToken) return;
+      if (!found) { hits.innerHTML = `<h2>${t('cardsTitle')}</h2><p class="topwait">${t('error')}</p>`; return; }
+      found.sort((a, b) => order.get(a.setId) - order.get(b.setId));
+      const shown = found.slice(0, 60);
+      hits.innerHTML = `<h2>${t('cardsTitle')} <span class="n">${found.length}</span></h2>${!found.length ? `<p class="topwait">${t('noCards')}</p>` : `
+        <div class="cards">${shown.map(c => `<a class="card" href="#/${gameKey}/${encodeURIComponent(c.setId)}/${encodeURIComponent(c.cardId)}">
+          <div class="img">${c.img ? `<img src="${esc(c.img)}" alt="${esc(c.name)}" loading="lazy" onerror="this.outerHTML='<div class=noimg>${t('noImage')}</div>'">` : `<div class="noimg">${esc(c.name)}<br>${t('noImage')}</div>`}</div>
+          ${c.alt ? `<span class="badge">${t('parallel')}</span>` : ''}
+          <div class="label"><b>${esc(c.num)}</b><span>${esc(c.name)}</span></div>
+          <div class="inset">${esc(c.setCode ? `${c.setCode} · ${c.setName}` : c.setName)}</div></a>`).join('')}</div>
+        ${found.length > shown.length ? `<p class="topwait">${tf('moreCards', { n: shown.length, m: found.length })}</p>` : ''}`}`;
+    }, 300);
+  };
   const draw = () => {
     const term = q.value.trim().toLowerCase(); save('q:' + gameKey, q.value);
     const shown = sets.filter(s => !term || `${s.code} ${s.name}`.toLowerCase().includes(term));
+    searchCards(term);
+    // with a search term, an empty set list just disappears and the card results take over
     list.innerHTML = shown.length ? shown.map(s => {
       const have = ownedBySet(s.id), pct = s.total ? Math.min(100, have / s.total * 100) : 0;
       return `<a class="set${s.pack ? ' has-pack' : ''}" href="#/${gameKey}/${encodeURIComponent(s.id)}">
@@ -668,12 +725,12 @@ async function renderSets(gameKey) {
         ${s.date ? `<div class="date${s.date > new Date().toISOString().slice(0, 10) ? ' soon' : ''}">${esc(fmtRelease(s.date))}</div>` : ''}
         <div class="meta">${s.total ? `${have} / ${s.total} ${t('cards')}` : have ? `${have} ${t('owned')}` : ''}</div>
         ${s.total ? `<div class="progress"><i style="width:${pct}%"></i></div>` : ''}</a>`;
-    }).join('') : `<div class="state">${t('noResults')}</div>`;
+    }).join('') : term.length >= 2 ? '' : `<div class="state">${t('noResults')}</div>`;
   };
   q.addEventListener('input', draw); draw();
 }
 
-async function renderSet(gameKey, setId) {
+async function renderSet(gameKey, setId, openCardId) {
   const g = GAMES[gameKey], tok = ++renderToken; loading();
   let data, setMeta;
   try { [data, setMeta] = await Promise.all([g.set(setId), g.sets().then(l => l.find(s => s.id === setId)).catch(() => null)]); }
@@ -737,6 +794,18 @@ async function renderSet(gameKey, setId) {
   grid.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.classList.contains('card')) e.target.click(); });
   draw();
   (data.later || []).forEach(p => p.then(changed => { if (changed && tok === renderToken) draw(); }).catch(() => {}));
+
+  // Arrived from a card search result (#/game/set/card): open that card, and drop it from the
+  // address once closed so the back button and reloads land on the set
+  const linked = openCardId && data.cards.find(c => c.id === openCardId);
+  if (linked) {
+    document.querySelector(`.card[data-i="${data.cards.indexOf(linked)}"]`)?.scrollIntoView({ block: 'center' });
+    openDetail(g, gameKey, data, linked, key(linked), draw);
+    const setHash = `#/${gameKey}/${encodeURIComponent(setId)}`;
+    modal.addEventListener('close', () => {
+      if (location.hash.startsWith(setHash + '/')) history.replaceState(null, '', setHash);   // not if we've already moved on
+    }, { once: true });
+  }
 
   // Most valuable: ranked once prices (and, for Pokémon, rarities) have arrived
   const top = document.getElementById('top');
@@ -917,10 +986,10 @@ async function openDetail(g, gameKey, data, card, ownKey, onChange) {
 
 function route() {
   chrome(); viewer.open && viewer.close(); modal.open && modal.close(); window.scrollTo(0, 0);
-  const [game, set] = parseHash();
+  const [game, set, card] = parseHash();
   if (!GAMES[game]) return renderHome();
   if (!set) return renderSets(game);
-  renderSet(game, set);
+  renderSet(game, set, card);
 }
 window.addEventListener('hashchange', route);
 route();
