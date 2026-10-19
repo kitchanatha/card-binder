@@ -1,0 +1,22 @@
+name: Feature request
+description: Suggest something new for Card Binder (a game, a language, a tool…)
+title: "[Idea] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like Card Binder to do?
+      placeholder: "e.g. Add Yu-Gi-Oh!, show price history charts, export my collection…"
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: How would you use it?
+      description: Optional, but it helps decide what to build first.
+  - type: dropdown
+    id: game
+    attributes:
+      label: Game
+      options: ["Pokémon", "ONE PIECE", "Both / not game-specific", "A new game"]

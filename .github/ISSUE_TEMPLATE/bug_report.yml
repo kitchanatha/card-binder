@@ -1,0 +1,34 @@
+name: Bug report
+description: Something on Card Binder is wrong or broken (missing images, wrong prices, a page that won't load…)
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for helping fix Card Binder! The page and browser details below were filled in for you.
+  - type: textarea
+    id: what
+    attributes:
+      label: What went wrong?
+      description: What did you see, and what did you expect instead?
+      placeholder: "e.g. The OP-05 set shows no images, or this card's price looks far too low."
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      description: The page or card where it happened
+  - type: input
+    id: card
+    attributes:
+      label: Card (if about one card)
+  - type: dropdown
+    id: game
+    attributes:
+      label: Game
+      options: ["Pokémon", "ONE PIECE", "Both / not game-specific"]
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and device

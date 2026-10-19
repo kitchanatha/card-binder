@@ -182,6 +182,18 @@
   .btn { border: 1px solid var(--border); background: var(--surface); border-radius: 10px; padding: 8px 14px; cursor: pointer; font-weight: 600; }
   .btn.on { background: var(--ok-soft); border-color: var(--ok); color: var(--ok); }
   .note { font-size: 12px; color: var(--muted); margin-top: 28px; }
+  .foot { border-top: 1px solid var(--border); margin-top: 24px; }
+  .footin { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px;
+    padding-block: 20px 32px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .footin p { margin: 0; flex: 1 1 260px; color: var(--muted); font-size: 13px; }
+  .footbtns { display: flex; flex-wrap: wrap; gap: 8px; }
+  .footbtns .btn { font-size: 13px; padding: 7px 14px; text-decoration: none; }
+  .footbtns .btn:hover, .footbtns .btn:focus-visible { border-color: var(--accent); color: var(--accent); }
+  .footbtns .kofi { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .footbtns .kofi:hover, .footbtns .kofi:focus-visible { color: #fff; filter: brightness(1.08); }
+  .footin small { flex-basis: 100%; color: var(--muted); font-size: 11px; }
+  .reportcard { display: inline-block; margin-top: 4px; font-size: 12px; color: var(--muted); text-decoration: underline; }
+  .reportcard:hover { color: var(--accent); }
   @media (max-width: 640px) {
     .detail { grid-template-columns: 1fr; }
     .detail img { max-width: 260px; margin: 0 auto; }
@@ -199,6 +211,7 @@
   </div>
 </header>
 <main id="app"></main>
+<footer class="foot" id="foot"></footer>
 <dialog id="modal"></dialog>
 <dialog id="viewer" class="viewer" aria-label="Card image"></dialog>
 
@@ -231,6 +244,9 @@ const I18N = {
     ebaySold: 'eBay sold', mercariSold: 'Mercari sold',
     topTitle: 'Most valuable', topLoading: 'Finding the most valuable cards…', tcgEnEdition: 'TCGplayer (English edition)',
     psaMarket: 'Market price (last 7 days)', psaUp: 'Trending up', psaDown: 'Trending down', psaStable: 'Stable',
+    footAbout: 'Card Binder is a free fan project. Ideas and bug reports help make it better.',
+    donate: 'Support on Ko-fi', requestFeature: 'Request a feature', reportBug: 'Report a bug',
+    reportCard: 'Report a problem with this card', ghNote: 'Requests and reports open on GitHub (a free account is needed to post).',
     viewFull: 'Full image', zoomIn: 'Zoom in', zoomOut: 'Zoom out', zoomFit: 'Fit', close: 'Close',
     zoomHint: 'Scroll, pinch or double-click to zoom · drag to move', zoomHintTouch: 'Pinch or double-tap to zoom · drag to move', fullLoading: 'loading full resolution…',
     psaAvg: 'Average, all tracked sales', psaMedian: 'Median, all tracked sales', psaSales: 'Sales tracked', psaLast: 'Last sale', psaLinks: 'See the individual sold listings:',
@@ -265,6 +281,9 @@ const I18N = {
     ebaySold: 'eBay 落札済み', mercariSold: 'メルカリ 売り切れ',
     topTitle: '高額カード', topLoading: '高額カードを集計中…', tcgEnEdition: 'TCGplayer（英語版の相場）',
     psaMarket: '相場（直近7日）', psaUp: '上昇傾向', psaDown: '下降傾向', psaStable: '横ばい',
+    footAbout: 'カードバインダーは無料のファンプロジェクトです。ご要望や不具合の報告をお待ちしています。',
+    donate: 'Ko-fi で応援する', requestFeature: '機能をリクエスト', reportBug: '不具合を報告',
+    reportCard: 'このカードの問題を報告', ghNote: 'リクエストと報告は GitHub で受け付けています（投稿には無料アカウントが必要です）。',
     viewFull: '拡大表示', zoomIn: '拡大', zoomOut: '縮小', zoomFit: '全体', close: '閉じる',
     zoomHint: 'スクロール・ピンチ・ダブルクリックで拡大 · ドラッグで移動', zoomHintTouch: 'ピンチ・ダブルタップで拡大 · ドラッグで移動', fullLoading: '高解像度を読み込み中…',
     psaAvg: '平均（全成約）', psaMedian: '中央値（全成約）', psaSales: '集計件数', psaLast: '最終成約日', psaLinks: '個別の成約履歴はこちら:',
@@ -275,6 +294,18 @@ const I18N = {
   },
 };
 const LANG_LABELS = { en: 'EN', ja: '日本語' };
+
+// ---------- support + feedback links ----------
+// Set KOFI_URL to your Ko-fi page (e.g. 'https://ko-fi.com/yourname'); the donate button stays hidden until then.
+const KOFI_URL = 'https://ko-fi.com/kitchanathamutok';
+const REPO = 'https://github.com/kitchanatha/card-binder';
+// Opens a pre-filled GitHub issue form (.github/ISSUE_TEMPLATE); field ids match the forms
+function issueUrl(template, fields = {}) {
+  const q = new URLSearchParams({ template: `${template}.yml`, ...fields });
+  return `${REPO}/issues/new?${q}`;
+}
+const gameField = g => ({ pokemon: 'Pokémon', onepiece: 'ONE PIECE' }[g] || 'Both / not game-specific');
+const browserField = () => `${navigator.userAgent.slice(0, 160)} · ${innerWidth}×${innerHeight} · ${lang}`;
 
 let lang = load('lang', navigator.language?.startsWith('ja') ? 'ja' : 'en');
 const t = k => I18N[lang][k] ?? I18N.en[k] ?? k;
@@ -585,6 +616,15 @@ let renderToken = 0;
 function chrome() {
   document.documentElement.lang = lang;
   document.getElementById('brand').innerHTML = t('brand');
+  const [game] = parseHash();
+  document.getElementById('foot').innerHTML = `<div class="footin">
+    <p>${t('footAbout')}</p>
+    <div class="footbtns">
+      ${KOFI_URL ? `<a class="btn kofi" href="${esc(KOFI_URL)}" target="_blank" rel="noopener">☕ ${t('donate')}</a>` : ''}
+      <a class="btn" target="_blank" rel="noopener" href="${esc(issueUrl('feature_request', { game: gameField(game) }))}">💡 ${t('requestFeature')}</a>
+      <a class="btn" target="_blank" rel="noopener" href="${esc(issueUrl('bug_report', { page: location.href, game: gameField(game), browser: browserField() }))}">🐞 ${t('reportBug')}</a>
+    </div>
+    <small>${t('ghNote')}</small></div>`;
   document.getElementById('langs').innerHTML = Object.keys(I18N).map(l =>
     `<button data-lang="${l}" aria-pressed="${l === lang}">${LANG_LABELS[l]}</button>`).join('');
 }
@@ -863,6 +903,9 @@ async function openDetail(g, gameKey, data, card, ownKey, onChange) {
         ${price}${psa}${odds}
         ${d.texts.map(x => `<div class="effect">${esc(x)}</div>`).join('')}
         <p id="obw">${btn()}</p>
+        <a class="reportcard" target="_blank" rel="noopener" href="${esc(issueUrl('bug_report', {
+          title: `[Bug] ${d.name} (${card.num})`, page: location.href, card: `${card.num} ${d.name} [${card.id}]`,
+          game: gameField(gameKey), browser: browserField() }))}">🐞 ${t('reportCard')}</a>
       </div></div>`;
   if (d.psa) loadPsa10(d.psa);
   modal.querySelector('#zoomopen')?.addEventListener('click', () => openViewer(card.imgHi, card.imgFull, d.name));
