@@ -77,6 +77,28 @@
   .odds span { font-size: 12px; color: var(--muted); }
   .odds strong { display: block; font-size: 20px; color: var(--accent); margin: 2px 0 4px; }
   .odds small { display: block; color: var(--muted); margin-top: 6px; font-size: 11px; }
+  .top { margin: 0 0 20px; }
+  .top h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 10px; }
+  .topwait, .topnote { font-size: 12px; color: var(--muted); margin: 8px 0 0; }
+  .toprow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .tcard { display: flex; gap: 12px; align-items: center; text-align: left; cursor: pointer; min-width: 0;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 10px; }
+  .tcard:hover, .tcard:focus-visible { border-color: var(--accent); }
+  .timg { position: relative; flex: 0 0 72px; aspect-ratio: 63/88; border-radius: 6px; overflow: hidden; background: var(--surface-2); }
+  .timg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .rank { position: absolute; left: 4px; top: 4px; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center;
+    font-size: 11px; font-weight: 800; color: #fff; background: var(--accent); }
+  .tinfo { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .tinfo b { font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .tinfo small { font-size: 12px; color: var(--muted); }
+  .tinfo strong { font-size: 18px; color: var(--accent); font-variant-numeric: tabular-nums; }
+  @media (max-width: 640px) {
+    .toprow { gap: 8px; }
+    .tcard { flex-direction: column; align-items: stretch; padding: 8px; gap: 6px; }
+    .timg { flex-basis: auto; width: 100%; }
+    .tinfo b { font-size: 12px; }
+    .tinfo strong { font-size: 15px; }
+  }
   .price { position: absolute; right: 6px; bottom: 6px; font-size: 11px; font-weight: 700; color: #fff;
     background: rgba(0,0,0,.72); padding: 2px 7px; border-radius: 4px; }
   .set .date { font-size: 12px; color: var(--muted); }
@@ -170,6 +192,7 @@ const I18N = {
     priceNote: 'Averages of recent sales, not one specific sale. Prices change daily.',
     psaTitle: 'PSA 10 sold prices', psaText: 'Graded prices aren’t in the free data feeds yet. See what PSA 10 copies actually sold for:',
     ebaySold: 'eBay sold', mercariSold: 'Mercari sold',
+    topTitle: 'Most valuable', topLoading: 'Finding the most valuable cards…', tcgEnEdition: 'TCGplayer (English edition)',
     psaMarket: 'Market price (last 7 days)', psaUp: 'Trending up', psaDown: 'Trending down', psaStable: 'Stable',
     psaAvg: 'Average, all tracked sales', psaMedian: 'Median, all tracked sales', psaSales: 'Sales tracked', psaLast: 'Last sale', psaLinks: 'See the individual sold listings:',
     'psa_not-found': 'Couldn’t match this card in the PSA price data.', 'psa_no-psa10-sales': 'No recent PSA 10 sales found.',
@@ -201,6 +224,7 @@ const I18N = {
     priceNote: '直近の取引の平均値で、個別の成約価格ではありません。価格は毎日変動します。',
     psaTitle: 'PSA10 の成約価格', psaText: '鑑定品の価格は無料データにまだ含まれていません。PSA10 の実際の落札・販売価格はこちら:',
     ebaySold: 'eBay 落札済み', mercariSold: 'メルカリ 売り切れ',
+    topTitle: '高額カード', topLoading: '高額カードを集計中…', tcgEnEdition: 'TCGplayer（英語版の相場）',
     psaMarket: '相場（直近7日）', psaUp: '上昇傾向', psaDown: '下降傾向', psaStable: '横ばい',
     psaAvg: '平均（全成約）', psaMedian: '中央値（全成約）', psaSales: '集計件数', psaLast: '最終成約日', psaLinks: '個別の成約履歴はこちら:',
     'psa_not-found': 'PSA 価格データでこのカードが見つかりませんでした。', 'psa_no-psa10-sales': '最近の PSA10 の成約はありません。',
@@ -360,6 +384,21 @@ function oddsLines(game, o) {
   return { main, tier, share: fill('tierShare', { r, c: o.count }) };
 }
 
+// Cardmarket (EUR) price block from a TCGdex card; avg1/7/30 are average sold prices over the last 1/7/30 days
+// Main figure is the median of trend / 7-day / 30-day / overall average, because a single field is
+// sometimes broken (Base Set Charizard has trend €0.02 next to a €682 30-day average).
+function cardmarketPrice(c) {
+  const cm = c.pricing?.cardmarket;
+  const vals = cm ? [cm.trend, cm.avg7, cm.avg30, cm.avg].filter(v => typeof v === 'number' && v > 0).sort((a, b) => a - b) : [];
+  if (!vals.length) return null;
+  const m = vals.length >> 1, main = vals.length % 2 ? vals[m] : (vals[m - 1] + vals[m]) / 2;
+  return {
+    source: 'Cardmarket', currency: 'EUR', updated: cm.updated, mainLabel: 'marketPrice', main,
+    rows: [['trend', cm.trend], ['sold1', cm.avg1], ['sold7', cm.avg7], ['sold30', cm.avg30], ['lowListing', cm.low], ['reverseHolo', cm['trend-holo']]],
+  };
+}
+const topByPrice = cards => cards.filter(c => c.price?.main > 0).sort((a, b) => b.price.main - a.price.main).slice(0, 3);
+
 const GAMES = {
   pokemon: {
     emoji: '⚡', name: { en: 'Pokémon', ja: 'ポケモン' }, desc: 'pokemonDesc',
@@ -394,6 +433,22 @@ const GAMES = {
       ].filter(Boolean);
       return { name: s.name, code: s.id.toUpperCase(), series: s.serie?.id, releaseDate: s.releaseDate, cards, later };
     },
+    // Prices only come one card at a time, so price the rarest cards (where the expensive ones are)
+    // and remember the result for a day.
+    async top(data, setId) {
+      const key = `top:${lang}:${setId}`, cached = load(key, null);
+      if (cached && Date.now() - cached.at < 24 * 3600 * 1000) {
+        data.cards.forEach(c => { if (cached.prices[c.id]) c.price = cached.prices[c.id]; });
+      } else {
+        const tier = c => rarityInfo('pokemon', c.rarity)?.tier ?? -1;
+        // rarest first; within a rarity keep set order (older sets put their holos first)
+        const pool = data.cards.slice().sort((a, b) => tier(b) - tier(a) || data.cards.indexOf(a) - data.cards.indexOf(b)).slice(0, 40);
+        await Promise.all(pool.map(c => getJSON(`https://api.tcgdex.net/v2/${TCGDEX[lang]}/cards/${encodeURIComponent(c.id)}`)
+          .then(d => { const p = cardmarketPrice(d); if (p) c.price = p; }).catch(() => {})));
+        save(key, { at: Date.now(), prices: Object.fromEntries(pool.filter(c => c.price).map(c => [c.id, c.price])) });
+      }
+      return topByPrice(data.cards);
+    },
     async detail(card) {
       const c = await getJSON(`https://api.tcgdex.net/v2/${TCGDEX[lang]}/cards/${encodeURIComponent(card.id)}`);
       const rows = [
@@ -406,12 +461,7 @@ const GAMES = {
       (c.attacks || []).forEach(a => texts.push(`${(a.cost || []).map(x => '●').join('')} ${a.name}${a.damage ? '  ' + a.damage : ''}${a.effect ? '\n' + a.effect : ''}`));
       if (c.effect) texts.push(c.effect);
       if (c.description) texts.push(c.description);
-      // Cardmarket (EUR): avg1/7/30 are average sold prices over the last 1/7/30 days
-      const cm = c.pricing?.cardmarket;
-      const prices = cm && (cm.trend || cm.avg) ? {
-        source: 'Cardmarket', currency: 'EUR', updated: cm.updated, mainLabel: 'trend', main: cm.trend || cm.avg,
-        rows: [['sold1', cm.avg1], ['sold7', cm.avg7], ['sold30', cm.avg30], ['lowListing', cm.low], ['reverseHolo', cm['trend-holo']]],
-      } : null;
+      const prices = cardmarketPrice(c);
       const searchQ = `${c.name} ${c.localId}${c.set?.cardCount?.official ? '/' + c.set.cardCount.official : ''}`;
       // PSA 10 lookup goes through api/psa10.js so the API key stays off the page.
       // Set names there are English, so Japanese lookups rely on name + number only.
@@ -428,7 +478,7 @@ const GAMES = {
         const label = p.title_parts?.label || '', code = lang === 'ja' ? opJaCode(label) : label, o = code && tbl[code];
         const enName = p.title_parts?.title && `${p.title_parts.prefix ? p.title_parts.prefix + ' · ' : ''}${p.title_parts.title}`;
         return {
-          id: prefix + p.id.slice(3), code, logo: null, total: null, date: o?.date || null,
+          id: prefix + p.id.slice(3), code, enCode: label, logo: null, total: null, date: o?.date || null,
           // official "BOOSTER PACK -ROMANCE DAWN-" → "BOOSTER PACK · ROMANCE DAWN"
           name: o?.name?.replace(/\s*-(.+?)-?\s*$/, ' · $1').replace(/\s+/g, ' ') || enName || p.raw_title,
         };
@@ -447,15 +497,17 @@ const GAMES = {
         id: c.id, num: c.id.replace(/_p(\d+)$/, ''), name: c.name, alt: /_p\d+$/.test(c.id), rarity: c.rarity,
         img: opImg(c.img_full_url), imgHi: opImg(c.img_full_url), raw: c,
       }));
-      // English prices: TCGplayer market price via optcgapi (one request per set; ids match punk-records)
-      const later = [];
-      if (lang === 'en' && meta?.code) later.push(
-        getJSON(`https://optcgapi.com/api/${meta.code.startsWith('ST') ? 'decks' : 'sets'}/${encodeURIComponent(meta.code)}/`).then(list => {
+      // TCGplayer market price via optcgapi (one request per set; ids match punk-records).
+      // Only the English edition is priced, so Japanese cards borrow the English price, labelled as such.
+      const later = [], enCode = meta?.enCode;
+      if (enCode) later.push(
+        getJSON(`https://optcgapi.com/api/${enCode.startsWith('ST') ? 'decks' : 'sets'}/${encodeURIComponent(enCode)}/`).then(list => {
           if (!Array.isArray(list)) return false;
           const byId = new Map(list.map(x => [x.card_image_id, x]));
+          const source = lang === 'en' ? 'TCGplayer' : t('tcgEnEdition');
           cards.forEach(c => {
             const x = byId.get(c.id);
-            if (x?.market_price != null) c.price = { source: 'TCGplayer', currency: 'USD', updated: x.date_scraped, mainLabel: 'marketPrice', main: x.market_price, rows: [] };
+            if (x?.market_price != null) c.price = { source, currency: 'USD', updated: x.date_scraped, mainLabel: 'marketPrice', main: x.market_price, rows: [] };
           });
           return true;
         }));
@@ -544,6 +596,7 @@ async function renderSet(gameKey, setId) {
   let filter = 'all', rarFilter = null;
   app.innerHTML = `<div class="crumbs"><a href="#/">${t('home')}</a> › <a href="#/${gameKey}">${esc(g.name[lang])}</a> ›</div>
     <h1>${esc(title)}</h1><p class="sub">${[code, `${data.cards.length} ${t('cards')}`, fmtRelease(data.releaseDate || setMeta?.date)].filter(Boolean).map(esc).join(' · ')}</p>
+    <section class="top" id="top" aria-label="${t('topTitle')}"><h2>${t('topTitle')}</h2><p class="topwait">${t('topLoading')}</p></section>
     <div class="toolbar">
       <input class="search" id="q" placeholder="${t('searchCards')}">
       ${['all', 'owned', 'missing'].map(f => `<button class="chip" data-f="${f}" aria-pressed="${f === filter}">${t(f)}</button>`).join('')}
@@ -595,6 +648,29 @@ async function renderSet(gameKey, setId) {
   grid.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.classList.contains('card')) e.target.click(); });
   draw();
   (data.later || []).forEach(p => p.then(changed => { if (changed && tok === renderToken) draw(); }).catch(() => {}));
+
+  // Most valuable: ranked once prices (and, for Pokémon, rarities) have arrived
+  const top = document.getElementById('top');
+  Promise.allSettled(data.later || [])
+    .then(() => g.top ? g.top(data, setId) : topByPrice(data.cards))
+    .catch(() => [])
+    .then(list => {
+      if (tok !== renderToken) return;
+      if (!list.length) { top.hidden = true; return; }
+      top.innerHTML = `<h2>${t('topTitle')}</h2><div class="toprow">${list.map((c, n) => {
+        const ri = rarityInfo(gameKey, c.rarity);
+        return `<button class="tcard" data-i="${data.cards.indexOf(c)}">
+          <span class="timg">${c.img ? `<img src="${esc(c.img)}" alt="">` : ''}<span class="rank">${n + 1}</span></span>
+          <span class="tinfo"><b>${esc(c.name)}</b>
+            <small>${esc(c.num)}${ri ? ` · ${esc(ri.code)}` : ''}${c.alt ? ` · ${t('parallel')}` : ''}</small>
+            <strong>${esc(fmtMoney(c.price.main, c.price.currency))}</strong></span></button>`;
+      }).join('')}</div><p class="topnote">${esc(list[0].price.source)}</p>`;
+      draw();   // newly priced cards get their price tag in the grid too
+    });
+  top.addEventListener('click', e => {
+    const b = e.target.closest('.tcard'); if (!b) return;
+    const c = data.cards[b.dataset.i]; openDetail(g, gameKey, data, c, key(c), draw);
+  });
 }
 
 const modal = document.getElementById('modal');
