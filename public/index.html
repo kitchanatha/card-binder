@@ -87,6 +87,22 @@
   .sethead > div { min-width: 0; }
   .packhero { width: 84px; max-height: 150px; object-fit: contain; flex: 0 0 auto; filter: drop-shadow(0 4px 10px rgba(0,0,0,.2)); }
   @media (max-width: 640px) { .packhero { width: 64px; } }
+  .collbtn { border: 1px solid var(--border); background: var(--surface); border-radius: 999px; padding: 5px 12px; font-size: 13px;
+    font-weight: 600; cursor: pointer; color: var(--text); }
+  .collbtn:hover, .collbtn:focus-visible { border-color: var(--accent); color: var(--accent); }
+  @media (max-width: 480px) { .collbtn span { display: none; } }
+  .coll { max-width: 520px; }
+  .collin { padding: 24px; display: grid; gap: 14px; }
+  .collin h2 { margin: 0; font-size: 22px; }
+  .collin h3 { margin: 0 0 4px; font-size: 15px; }
+  .collin section { border-top: 1px solid var(--border); padding-top: 14px; }
+  .muted { color: var(--muted); font-size: 13px; margin: 0 0 10px; }
+  .colltable { border-collapse: collapse; font-variant-numeric: tabular-nums; width: 100%; max-width: 320px; }
+  .colltable th, .colltable td { padding: 4px 10px 4px 0; text-align: left; font-size: 14px; }
+  .colltable thead th { color: var(--muted); font-size: 12px; font-weight: 600; }
+  .colltable td { font-weight: 700; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .collmsg { margin: 8px 0 0; font-size: 13px; color: var(--ok); }
   .cardhits { margin-top: 28px; }
   .cardhits h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 12px; }
   .cardhits h2 .n { color: var(--accent); margin-left: 4px; }
@@ -212,6 +228,7 @@
   <div class="bar">
     <a class="brand" href="#/" id="brand"></a>
     <div class="spacer"></div>
+    <button class="collbtn" id="collopen" type="button"></button>
     <div class="seg" role="group" aria-label="Language" id="langs"></div>
   </div>
 </header>
@@ -219,6 +236,8 @@
 <footer class="foot" id="foot"></footer>
 <dialog id="modal"></dialog>
 <dialog id="viewer" class="viewer" aria-label="Card image"></dialog>
+<dialog id="coll" class="coll"></dialog>
+<input type="file" id="importfile" accept=".json,application/json" hidden>
 
 <script>
 // ---------- i18n: add a language by adding one entry here + data mappings below ----------
@@ -227,6 +246,17 @@ const I18N = {
     brand: 'Card <span>Binder</span>', home: 'Games', pickGame: 'Choose a game',
     pickGameSub: 'Browse every card in every set. Tap ✓ to mark cards you own.',
     pokemonDesc: 'Pokémon Trading Card Game', onepieceDesc: 'ONE PIECE Card Game',
+    myCollection: 'My collection',
+    collIntro: 'No account needed. Your collection is saved in this browser.',
+    backupTitle: 'Backup and move', backupText: 'Save your collection to a file, then import it on another phone, computer or browser. Importing adds to what is here; it never deletes cards.',
+    exportBtn: 'Export file', importBtn: 'Import file', exported: 'Saved. Look for the file in your downloads.',
+    imported: 'Imported. {n} cards updated.', importBad: 'That file isn’t a Card Binder collection. Choose a file made with Export.',
+    driveTitle: 'Sync with Google Drive (optional)',
+    driveText: 'Keeps your devices in step through a file in your own Google Drive. Card Binder can only see that one file and stores nothing about you.',
+    connectDrive: 'Connect Google Drive', syncNow: 'Sync now', disconnect: 'Disconnect',
+    syncing: 'Syncing…', syncOk: 'Up to date.', syncChanged: 'Synced. {n} cards updated from your other devices.',
+    syncReconnect: 'Google sign-in expired. Tap Sync now to continue.', syncCancelled: 'Google sign-in was cancelled.',
+    syncFailed: 'Sync failed. Check your connection and try again.', lastSync: 'Last synced {d}',
     searchSetsCards: 'Search sets or card names…', cardsTitle: 'Cards', searching: 'Searching all sets…',
     noCards: 'No cards with that name.', moreCards: 'Showing {n} of {m}. Type more of the name to narrow it down.',
     sets: 'Sets', cards: 'cards', searchSets: 'Search sets…', searchCards: 'Search cards by name or number…',
@@ -266,6 +296,17 @@ const I18N = {
     brand: 'カード<span>バインダー</span>', home: 'ゲーム', pickGame: 'ゲームを選択',
     pickGameSub: '全エキスパンションの全カードを閲覧。✓ で所持カードを記録できます。',
     pokemonDesc: 'ポケモンカードゲーム', onepieceDesc: 'ONE PIECEカードゲーム',
+    myCollection: 'マイコレクション',
+    collIntro: 'アカウント登録は不要です。コレクションはこのブラウザに保存されます。',
+    backupTitle: 'バックアップと引っ越し', backupText: 'コレクションをファイルに保存し、別のスマホ・パソコン・ブラウザで読み込めます。読み込みは追加のみで、カードが消えることはありません。',
+    exportBtn: 'ファイルに保存', importBtn: 'ファイルを読み込む', exported: '保存しました。ダウンロードフォルダをご確認ください。',
+    imported: '読み込みました。{n} 枚を更新しました。', importBad: 'カードバインダーのコレクションファイルではありません。「ファイルに保存」で作ったファイルを選んでください。',
+    driveTitle: 'Google ドライブで同期（任意）',
+    driveText: 'あなた自身の Google ドライブ内のファイルを使って端末間で同期します。カードバインダーが見られるのはそのファイルだけで、あなたの情報は保存しません。',
+    connectDrive: 'Google ドライブに接続', syncNow: '今すぐ同期', disconnect: '接続を解除',
+    syncing: '同期中…', syncOk: '最新の状態です。', syncChanged: '同期しました。他の端末から {n} 枚を更新しました。',
+    syncReconnect: 'Google のログインが切れました。「今すぐ同期」を押してください。', syncCancelled: 'Google へのログインがキャンセルされました。',
+    syncFailed: '同期に失敗しました。接続を確認してもう一度お試しください。', lastSync: '最終同期 {d}',
     searchSetsCards: 'エキスパンション名・カード名で検索…', cardsTitle: 'カード', searching: '全エキスパンションを検索中…',
     noCards: 'その名前のカードはありません。', moreCards: '{m} 件中 {n} 件を表示しています。名前をもう少し入力すると絞り込めます。',
     sets: 'エキスパンション', cards: '枚', searchSets: 'エキスパンションを検索…', searchCards: 'カード名・番号で検索…',
@@ -331,8 +372,164 @@ const ownedKey = (game) => `owned:${game}:${lang}`;
 const getOwned = (game) => new Set(load(ownedKey(game), []));
 function toggleOwned(game, id) {
   const s = getOwned(game); s.has(id) ? s.delete(id) : s.add(id);
-  save(ownedKey(game), [...s]); return s.has(id);
+  save(ownedKey(game), [...s]);
+  // remember when each card was marked or unmarked, so syncing two devices keeps the latest change
+  const stamps = load('stamps:' + ownedKey(game), {}); stamps[id] = [s.has(id), Date.now()];
+  save('stamps:' + ownedKey(game), stamps);
+  onCollectionChange();
+  return s.has(id);
 }
+
+// ---------- collection backup / sync ----------
+// A snapshot covers every game and language: { app, version, savedAt, collections: { "pokemon:en": [ids] },
+// stamps: { "pokemon:en": { id: [owned, time] } } }. Export/Import and Google Drive sync all use it.
+const COLLECTION_KEYS = ['pokemon:en', 'pokemon:ja', 'onepiece:en', 'onepiece:ja'];
+function snapshot() {
+  const collections = {}, stamps = {};
+  for (const k of COLLECTION_KEYS) { collections[k] = load('owned:' + k, []); stamps[k] = load('stamps:owned:' + k, {}); }
+  return { app: 'card-binder', version: 1, savedAt: new Date().toISOString(), collections, stamps };
+}
+// Merge another snapshot into this browser. Per card the most recent mark/unmark wins;
+// a card with no history on either side is kept if either side owns it. Returns how many cards changed.
+function mergeSnapshot(other) {
+  if (!other || other.app !== 'card-binder' || typeof other.collections !== 'object') throw new Error('not-collection');
+  let changed = 0;
+  for (const k of COLLECTION_KEYS) {
+    const mine = new Set(load('owned:' + k, [])), mineSt = load('stamps:owned:' + k, {});
+    const theirs = new Set(Array.isArray(other.collections[k]) ? other.collections[k].filter(x => typeof x === 'string') : []);
+    const theirSt = other.stamps?.[k] || {};
+    const out = new Set(), st = { ...mineSt };
+    for (const id of new Set([...mine, ...theirs, ...Object.keys(mineSt), ...Object.keys(theirSt)])) {
+      const a = mineSt[id], b = Array.isArray(theirSt[id]) ? theirSt[id] : undefined;
+      let owned;
+      if (a && b) { owned = (b[1] > a[1] ? b : a)[0]; st[id] = b[1] > a[1] ? b : a; }
+      else if (a || b) {
+        const s = a || b, otherHas = a ? theirs.has(id) : mine.has(id);
+        owned = s[0] || otherHas; st[id] = a || b;          // no history on one side: never drop a card that side owns
+      } else owned = mine.has(id) || theirs.has(id);
+      if (owned) out.add(id);
+      if (owned !== mine.has(id)) changed++;
+    }
+    save('owned:' + k, [...out]); save('stamps:owned:' + k, st);
+  }
+  return changed;
+}
+let onCollectionChange = () => {};
+
+// ---------- Google Drive sync (optional) ----------
+// Stores the snapshot as one file in the viewer's own Google Drive. The drive.file scope only lets
+// Card Binder see files it created itself; nothing is stored anywhere else.
+// Set GOOGLE_CLIENT_ID to an OAuth client id (Google Cloud console) to show the sync option.
+const GOOGLE_CLIENT_ID = '';
+const DRIVE_FILE = 'card-binder-collection.json';
+const drive = { token: null, exp: 0, client: null, busy: false, timer: null, status: '' };
+const driveOn = () => !!load('drive:on', false);
+function loadScript(src) {
+  return new Promise((ok, fail) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = fail; document.head.append(s); });
+}
+// Ask Google for an access token; shows Google's own sign-in/consent popup the first time
+async function driveToken(interactive) {
+  if (drive.token && Date.now() < drive.exp - 60000) return drive.token;
+  if (!interactive) return null;
+  if (!window.google?.accounts?.oauth2) await loadScript('https://accounts.google.com/gsi/client');
+  return new Promise((resolve, reject) => {
+    drive.client = google.accounts.oauth2.initTokenClient({
+      client_id: GOOGLE_CLIENT_ID, scope: 'https://www.googleapis.com/auth/drive.file',
+      callback: r => {
+        if (r.error || !r.access_token) return reject(new Error(r.error || 'no-token'));
+        drive.token = r.access_token; drive.exp = Date.now() + (r.expires_in || 3600) * 1000; resolve(drive.token);
+      },
+      error_callback: e => reject(new Error(e?.type || 'popup')),
+    });
+    drive.client.requestAccessToken({ prompt: driveOn() ? '' : 'consent' });
+  });
+}
+async function driveFetch(url, opts = {}) {
+  const r = await fetch(url, { ...opts, headers: { ...(opts.headers || {}), Authorization: `Bearer ${drive.token}` } });
+  if (r.status === 401) { drive.token = null; throw new Error('expired'); }
+  if (!r.ok) throw new Error(`drive ${r.status}`);
+  return r;
+}
+// Pull the Drive copy, merge it in, push the merged result back
+async function driveSync(interactive) {
+  if (drive.busy) return;
+  drive.busy = true; drive.status = 'syncing'; renderColl();
+  try {
+    if (!await driveToken(interactive)) { drive.status = 'reconnect'; return; }
+    const api = 'https://www.googleapis.com/drive/v3/files', up = 'https://www.googleapis.com/upload/drive/v3/files';
+    const q = encodeURIComponent(`name='${DRIVE_FILE}' and trashed=false`);
+    const found = (await (await driveFetch(`${api}?q=${q}&spaces=drive&fields=files(id)`)).json()).files?.[0];
+    let changed = 0;
+    if (found) changed = mergeSnapshot(await (await driveFetch(`${api}/${found.id}?alt=media`)).json());
+    const body = JSON.stringify(snapshot());
+    if (found) await driveFetch(`${up}/${found.id}?uploadType=media`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body });
+    else {
+      const meta = JSON.stringify({ name: DRIVE_FILE, mimeType: 'application/json' }), b = 'cb' + Date.now();
+      await driveFetch(`${up}?uploadType=multipart`, { method: 'POST', headers: { 'Content-Type': `multipart/related; boundary=${b}` },
+        body: `--${b}\r\nContent-Type: application/json\r\n\r\n${meta}\r\n--${b}\r\nContent-Type: application/json\r\n\r\n${body}\r\n--${b}--` });
+    }
+    save('drive:on', true); save('drive:last', Date.now());
+    drive.status = changed ? tf('syncChanged', { n: changed }) : 'ok';
+    if (changed) route();   // redraw so newly synced cards show as owned
+  } catch (e) {
+    drive.status = e.message === 'expired' ? 'reconnect' : /popup|access_denied/.test(e.message) ? 'cancelled' : 'failed';
+  } finally { drive.busy = false; renderColl(); }
+}
+function driveDisconnect() {
+  if (drive.token && window.google?.accounts?.oauth2) google.accounts.oauth2.revoke(drive.token, () => {});
+  drive.token = null; save('drive:on', false); drive.status = ''; renderColl();
+}
+// While connected, push changes a few seconds after the last tap (no popup: skipped if the token expired)
+onCollectionChange = () => {
+  if (!GOOGLE_CLIENT_ID || !driveOn() || !drive.token) return;
+  clearTimeout(drive.timer); drive.timer = setTimeout(() => driveSync(false), 4000);
+};
+
+// ---------- "My collection" panel ----------
+const coll = document.getElementById('coll'), importFile = document.getElementById('importfile');
+let collMsg = '';
+function renderColl() {
+  if (!coll.open) return;
+  const count = k => load('owned:' + k, []).length;
+  const rows = [['Pokémon', 'pokemon'], ['ONE PIECE', 'onepiece']].map(([n, g]) =>
+    `<tr><th>${n}</th><td>${count(g + ':en')}</td><td>${count(g + ':ja')}</td></tr>`).join('');
+  const last = load('drive:last', 0);
+  const st = drive.status, stText = st === 'syncing' ? t('syncing') : st === 'ok' ? t('syncOk') : st === 'reconnect' ? t('syncReconnect')
+    : st === 'cancelled' ? t('syncCancelled') : st === 'failed' ? t('syncFailed') : st;
+  coll.innerHTML = `<button class="close" aria-label="${t('close')}" onclick="this.closest('dialog').close()">×</button>
+    <div class="collin"><h2>${t('myCollection')}</h2>
+      <p class="muted">${t('collIntro')}</p>
+      <table class="colltable"><thead><tr><th></th><th>EN</th><th>日本語</th></tr></thead><tbody>${rows}</tbody></table>
+      <section><h3>${t('backupTitle')}</h3><p class="muted">${t('backupText')}</p>
+        <div class="row"><button class="btn" data-c="export">⬇ ${t('exportBtn')}</button><button class="btn" data-c="import">⬆ ${t('importBtn')}</button></div>
+        ${collMsg ? `<p class="collmsg">${esc(collMsg)}</p>` : ''}</section>
+      ${GOOGLE_CLIENT_ID ? `<section><h3>${t('driveTitle')}</h3><p class="muted">${t('driveText')}</p>
+        <div class="row">${driveOn()
+          ? `<button class="btn on" data-c="sync" ${drive.busy ? 'disabled' : ''}>⟳ ${t('syncNow')}</button><button class="btn" data-c="disconnect">${t('disconnect')}</button>`
+          : `<button class="btn" data-c="connect" ${drive.busy ? 'disabled' : ''}>☁ ${t('connectDrive')}</button>`}</div>
+        <p class="collmsg">${esc(stText || (last ? tf('lastSync', { d: new Date(last).toLocaleString(lang === 'ja' ? 'ja-JP' : 'en-GB') }) : ''))}</p></section>` : ''}
+    </div>`;
+}
+document.getElementById('collopen').addEventListener('click', () => { collMsg = ''; coll.showModal(); renderColl(); });
+coll.addEventListener('click', e => {
+  if (e.target === coll) return coll.close();
+  const a = e.target.closest('[data-c]')?.dataset.c;
+  if (a === 'export') {
+    const blob = new Blob([JSON.stringify(snapshot(), null, 1)], { type: 'application/json' });
+    const link = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: `card-binder-collection-${new Date().toISOString().slice(0, 10)}.json` });
+    document.body.append(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+    collMsg = t('exported'); renderColl();
+  } else if (a === 'import') importFile.click();
+  else if (a === 'connect' || a === 'sync') driveSync(true);
+  else if (a === 'disconnect') driveDisconnect();
+});
+importFile.addEventListener('change', async () => {
+  const f = importFile.files[0]; importFile.value = '';
+  if (!f) return;
+  try { const n = mergeSnapshot(JSON.parse(await f.text())); collMsg = tf('imported', { n }); route(); coll.open || coll.showModal(); }
+  catch { collMsg = t('importBad'); }
+  renderColl(); onCollectionChange();
+});
 
 // ---------- fetch with cache ----------
 const cache = new Map();
@@ -648,6 +845,7 @@ let renderToken = 0;
 function chrome() {
   document.documentElement.lang = lang;
   document.getElementById('brand').innerHTML = t('brand');
+  document.getElementById('collopen').innerHTML = `★ <span>${t('myCollection')}</span>`;
   const [game] = parseHash();
   document.getElementById('foot').innerHTML = `<div class="footin">
     <p>${t('footAbout')}</p>
