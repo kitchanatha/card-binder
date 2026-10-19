@@ -256,6 +256,7 @@ const I18N = {
     connectDrive: 'Connect Google Drive', syncNow: 'Sync now', disconnect: 'Disconnect',
     syncing: 'Syncing…', syncOk: 'Up to date.', syncChanged: 'Synced. {n} cards updated from your other devices.',
     syncReconnect: 'Google sign-in expired. Tap Sync now to continue.', syncCancelled: 'Google sign-in was cancelled.',
+    syncBlocked: 'Your browser blocked the Google sign-in window. Allow pop-ups for this site, then try again.',
     syncFailed: 'Sync failed. Check your connection and try again.', lastSync: 'Last synced {d}',
     searchSetsCards: 'Search sets or card names…', cardsTitle: 'Cards', searching: 'Searching all sets…',
     noCards: 'No cards with that name.', moreCards: 'Showing {n} of {m}. Type more of the name to narrow it down.',
@@ -306,6 +307,7 @@ const I18N = {
     connectDrive: 'Google ドライブに接続', syncNow: '今すぐ同期', disconnect: '接続を解除',
     syncing: '同期中…', syncOk: '最新の状態です。', syncChanged: '同期しました。他の端末から {n} 枚を更新しました。',
     syncReconnect: 'Google のログインが切れました。「今すぐ同期」を押してください。', syncCancelled: 'Google へのログインがキャンセルされました。',
+    syncBlocked: 'ブラウザが Google のログイン画面をブロックしました。このサイトのポップアップを許可してから、もう一度お試しください。',
     syncFailed: '同期に失敗しました。接続を確認してもう一度お試しください。', lastSync: '最終同期 {d}',
     searchSetsCards: 'エキスパンション名・カード名で検索…', cardsTitle: 'カード', searching: '全エキスパンションを検索中…',
     noCards: 'その名前のカードはありません。', moreCards: '{m} 件中 {n} 件を表示しています。名前をもう少し入力すると絞り込めます。',
@@ -420,7 +422,7 @@ let onCollectionChange = () => {};
 // Stores the snapshot as one file in the viewer's own Google Drive. The drive.file scope only lets
 // Card Binder see files it created itself; nothing is stored anywhere else.
 // Set GOOGLE_CLIENT_ID to an OAuth client id (Google Cloud console) to show the sync option.
-const GOOGLE_CLIENT_ID = '';
+const GOOGLE_CLIENT_ID = '63616001931-p000i3bktjjngenoc89h05a424dv6q3b.apps.googleusercontent.com';
 const DRIVE_FILE = 'card-binder-collection.json';
 const drive = { token: null, exp: 0, client: null, busy: false, timer: null, status: '' };
 const driveOn = () => !!load('drive:on', false);
@@ -472,7 +474,8 @@ async function driveSync(interactive) {
     drive.status = changed ? tf('syncChanged', { n: changed }) : 'ok';
     if (changed) route();   // redraw so newly synced cards show as owned
   } catch (e) {
-    drive.status = e.message === 'expired' ? 'reconnect' : /popup|access_denied/.test(e.message) ? 'cancelled' : 'failed';
+    drive.status = e.message === 'expired' ? 'reconnect' : e.message === 'popup_failed_to_open' ? 'blocked'
+      : /popup|access_denied/.test(e.message) ? 'cancelled' : 'failed';
   } finally { drive.busy = false; renderColl(); }
 }
 function driveDisconnect() {
@@ -495,7 +498,7 @@ function renderColl() {
     `<tr><th>${n}</th><td>${count(g + ':en')}</td><td>${count(g + ':ja')}</td></tr>`).join('');
   const last = load('drive:last', 0);
   const st = drive.status, stText = st === 'syncing' ? t('syncing') : st === 'ok' ? t('syncOk') : st === 'reconnect' ? t('syncReconnect')
-    : st === 'cancelled' ? t('syncCancelled') : st === 'failed' ? t('syncFailed') : st;
+    : st === 'cancelled' ? t('syncCancelled') : st === 'blocked' ? t('syncBlocked') : st === 'failed' ? t('syncFailed') : st;
   coll.innerHTML = `<button class="close" aria-label="${t('close')}" onclick="this.closest('dialog').close()">×</button>
     <div class="collin"><h2>${t('myCollection')}</h2>
       <p class="muted">${t('collIntro')}</p>
