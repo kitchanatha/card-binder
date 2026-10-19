@@ -1,0 +1,24 @@
+{
+  "name": "Card Binder",
+  "short_name": "Card Binder",
+  "description": "Browse every Pokémon and ONE PIECE card in every set, in English and Japanese, and track your collection.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f6f5f2",
+  "theme_color": "#c2410c",
+  "lang": "en",
+  "categories": ["entertainment", "games", "utilities"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Pokémon", "url": "/#/pokemon", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "ONE PIECE", "url": "/#/onepiece", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

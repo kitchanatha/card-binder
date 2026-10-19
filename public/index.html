@@ -2,8 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Card Binder</title>
+<meta name="description" content="Browse every Pokémon and ONE PIECE card in every set, in English and Japanese, with prices, rarity and pull odds. Track your collection.">
+<!-- installable app (PWA) -->
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="theme-color" content="#f6f5f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151413" media="(prefers-color-scheme: dark)">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Card Binder">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <style>
   :root {
     --bg: #f6f5f2; --surface: #ffffff; --surface-2: #efede8; --text: #1d1c1a; --muted: #6b675f;
@@ -22,8 +34,8 @@
   a { color: inherit; text-decoration: none; }
 
   header { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent);
-    backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
-  .bar { max-width: 1200px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; gap: 12px; }
+    backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding-top: env(safe-area-inset-top, 0px); }
+  .bar { max-width: 1200px; margin: 0 auto; padding-block: 12px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; align-items: center; gap: 12px; }
   .brand { font-weight: 700; font-size: 18px; letter-spacing: -.01em; }
   .brand span { color: var(--accent); }
   .spacer { flex: 1; }
@@ -31,7 +43,7 @@
   .seg button { border: 0; background: transparent; padding: 4px 12px; border-radius: 999px; cursor: pointer; font-size: 13px; font-weight: 600; color: var(--muted); }
   .seg button[aria-pressed="true"] { background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
 
-  main { max-width: 1200px; margin: 0 auto; padding: 20px 16px 60px; }
+  main { max-width: 1200px; margin: 0 auto; padding-block: 20px 60px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
   .crumbs { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
   .crumbs a:hover { color: var(--accent); }
   h1 { font-size: 26px; margin: 0 0 4px; letter-spacing: -.02em; }
@@ -212,7 +224,7 @@
   .note { font-size: 12px; color: var(--muted); margin-top: 28px; }
   .foot { border-top: 1px solid var(--border); margin-top: 24px; }
   .footin { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px;
-    padding-block: 20px 32px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+    padding-block: 20px calc(32px + env(safe-area-inset-bottom, 0px)); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
   .footin p { margin: 0; flex: 1 1 260px; color: var(--muted); font-size: 13px; }
   .footbtns { display: flex; flex-wrap: wrap; gap: 8px; }
   .footbtns .btn { font-size: 13px; padding: 7px 14px; text-decoration: none; }
@@ -220,6 +232,12 @@
   .footbtns .kofi { background: var(--accent); border-color: var(--accent); color: #fff; }
   .footbtns .kofi:hover, .footbtns .kofi:focus-visible { color: #fff; filter: brightness(1.08); }
   .footin small { flex-basis: 100%; color: var(--muted); font-size: 11px; }
+  .footbtns .install { background: var(--text); border-color: var(--text); color: var(--bg); }
+  .footbtns .install:hover, .footbtns .install:focus-visible { color: var(--bg); filter: brightness(1.15); }
+  #installslot:empty { display: none; }
+  .iosinstall { flex-basis: 100%; margin: 0; padding: 10px 14px; border-radius: 10px; background: var(--surface-2); font-size: 13px; }
+  .offline { position: sticky; top: calc(57px + env(safe-area-inset-top, 0px)); z-index: 9; text-align: center; font-size: 13px; font-weight: 600;
+    padding: 8px max(16px, env(safe-area-inset-right, 0px)) 8px max(16px, env(safe-area-inset-left, 0px)); background: var(--accent-soft); color: var(--accent); }
   .reportcard { display: inline-block; margin-top: 4px; font-size: 12px; color: var(--muted); text-decoration: underline; }
   .reportcard:hover { color: var(--accent); }
   @media (max-width: 640px) {
@@ -239,6 +257,7 @@
     <div class="seg" role="group" aria-label="Language" id="langs"></div>
   </div>
 </header>
+<div class="offline" id="offline" role="status" hidden></div>
 <main id="app"></main>
 <footer class="foot" id="foot"></footer>
 <dialog id="modal"></dialog>
@@ -290,6 +309,8 @@ const I18N = {
     topTitle: 'Most valuable', topLoading: 'Finding the most valuable cards…', tcgEnEdition: 'TCGplayer (English edition)',
     psaMarket: 'Market price (last 7 days)', psaUp: 'Trending up', psaDown: 'Trending down', psaStable: 'Stable',
     footAbout: 'Card Binder is a free fan project. Ideas and bug reports help make it better.',
+    installApp: 'Install app', offline: 'You’re offline. Sets and cards you’ve already opened still work.',
+    iosInstall: 'On iPhone or iPad: open this site in Safari, tap the Share button (□↑), then “Add to Home Screen”.',
     privacy: 'Privacy policy', donate: 'Support on Ko-fi', requestFeature: 'Request a feature', reportBug: 'Report a bug',
     reportCard: 'Report a problem with this card', ghNote: 'Requests and reports open on GitHub (a free account is needed to post).',
     viewFull: 'Full image', zoomIn: 'Zoom in', zoomOut: 'Zoom out', zoomFit: 'Fit', close: 'Close',
@@ -341,6 +362,8 @@ const I18N = {
     topTitle: '高額カード', topLoading: '高額カードを集計中…', tcgEnEdition: 'TCGplayer（英語版の相場）',
     psaMarket: '相場（直近7日）', psaUp: '上昇傾向', psaDown: '下降傾向', psaStable: '横ばい',
     footAbout: 'カードバインダーは無料のファンプロジェクトです。ご要望や不具合の報告をお待ちしています。',
+    installApp: 'アプリとしてインストール', offline: 'オフラインです。一度開いたエキスパンションとカードは引き続き表示できます。',
+    iosInstall: 'iPhone・iPad の場合：Safari でこのサイトを開き、共有ボタン（□↑）から「ホーム画面に追加」を選んでください。',
     privacy: 'プライバシーポリシー', donate: 'Ko-fi で応援する', requestFeature: '機能をリクエスト', reportBug: '不具合を報告',
     reportCard: 'このカードの問題を報告', ghNote: 'リクエストと報告は GitHub で受け付けています（投稿には無料アカウントが必要です）。',
     viewFull: '拡大表示', zoomIn: '拡大', zoomOut: '縮小', zoomFit: '全体', close: '閉じる',
@@ -363,6 +386,28 @@ function issueUrl(template, fields = {}) {
   const q = new URLSearchParams({ template: `${template}.yml`, ...fields });
   return `${REPO}/issues/new?${q}`;
 }
+// ---------- installable app + offline ----------
+if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+let installPrompt = null;
+const isStandalone = () => matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+const isIOS = () => /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+// Chrome/Edge/Android offer a real install prompt; iPhone/iPad Safari only has Share → Add to Home Screen
+addEventListener('beforeinstallprompt', e => { e.preventDefault(); installPrompt = e; renderInstall(); });
+addEventListener('appinstalled', () => { installPrompt = null; renderInstall(); });
+function renderInstall() {
+  const slot = document.getElementById('installslot'); if (!slot) return;
+  const show = !isStandalone() && (installPrompt || isIOS());
+  slot.innerHTML = show ? `<button class="btn install" id="installbtn" type="button">📲 ${t('installApp')}</button>` : '';
+}
+document.addEventListener('click', async e => {
+  if (e.target.closest('#installbtn')) {
+    if (installPrompt) { installPrompt.prompt(); await installPrompt.userChoice.catch(() => {}); installPrompt = null; renderInstall(); }
+    else { const hint = document.getElementById('iosinstall'); if (hint) hint.hidden = !hint.hidden; }
+  }
+});
+function renderOffline() { const b = document.getElementById('offline'); if (b) b.hidden = navigator.onLine; }
+addEventListener('online', renderOffline); addEventListener('offline', renderOffline);
+
 const gameField = g => ({ pokemon: 'Pokémon', onepiece: 'ONE PIECE' }[g] || 'Both / not game-specific');
 const browserField = () => `${navigator.userAgent.slice(0, 160)} · ${innerWidth}×${innerHeight} · ${lang}`;
 
@@ -856,15 +901,19 @@ function chrome() {
   document.documentElement.lang = lang;
   document.getElementById('brand').innerHTML = t('brand');
   document.getElementById('collopen').innerHTML = `★ <span>${t('myCollection')}</span>`;
+  document.getElementById('offline').textContent = t('offline'); renderOffline();
   const [game] = parseHash();
   document.getElementById('foot').innerHTML = `<div class="footin">
     <p>${t('footAbout')}</p>
     <div class="footbtns">
+      <span id="installslot"></span>
       ${KOFI_URL ? `<a class="btn kofi" href="${esc(KOFI_URL)}" target="_blank" rel="noopener">☕ ${t('donate')}</a>` : ''}
       <a class="btn" target="_blank" rel="noopener" href="${esc(issueUrl('feature_request', { game: gameField(game) }))}">💡 ${t('requestFeature')}</a>
       <a class="btn" target="_blank" rel="noopener" href="${esc(issueUrl('bug_report', { page: location.href, game: gameField(game), browser: browserField() }))}">🐞 ${t('reportBug')}</a>
     </div>
-    <small>${t('ghNote')} · <a href="privacy.html">${t('privacy')}</a></small></div>`;
+    <small>${t('ghNote')} · <a href="privacy.html">${t('privacy')}</a></small>
+    <p class="iosinstall" id="iosinstall" hidden>${t('iosInstall')}</p></div>`;
+  renderInstall();
   document.getElementById('langs').innerHTML = Object.keys(I18N).map(l =>
     `<button data-lang="${l}" aria-pressed="${l === lang}">${LANG_LABELS[l]}</button>`).join('');
 }

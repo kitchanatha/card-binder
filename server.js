@@ -3,7 +3,8 @@
 const http = require('http'), fs = require('fs'), path = require('path');
 
 const PUBLIC = path.join(__dirname, 'public');
-const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json' };
+const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
+  '.webmanifest': 'application/manifest+json', '.png': 'image/png', '.svg': 'image/svg+xml' };
 const API = { '/api/img': require('./api/img'), '/api/psa10': require('./api/psa10') };
 
 http.createServer((req, res) => {
