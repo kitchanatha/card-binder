@@ -1,0 +1,502 @@
+{
+ "ja": {
+  "OP-18": {
+   "name": "ブースターパック 神の支配",
+   "date": "2026-11-21"
+  },
+  "EB-05": {
+   "name": "エクストラブースター ONE PIECE Heroines Edition vol.2",
+   "date": "2026-10-31"
+  },
+  "OP-17": {
+   "name": "ブースターパック 世界最強の戦士",
+   "date": "2026-08-22"
+  },
+  "OP-16": {
+   "name": "ブースターパック 決戦の刻",
+   "date": "2026-05-30"
+  },
+  "OP-15": {
+   "name": "ブースターパック 神の島の冒険",
+   "date": "2026-02-28"
+  },
+  "EB-04": {
+   "name": "エクストラブースター EGGHEAD CRISIS",
+   "date": "2026-01-31"
+  },
+  "OP-14": {
+   "name": "ブースターパック 蒼海の七傑",
+   "date": "2025-11-22"
+  },
+  "EB-03": {
+   "name": "エクストラブースター ONE PIECE Heroines Edition",
+   "date": "2025-10-25"
+  },
+  "OP-13": {
+   "name": "ブースターパック 受け継がれる意志",
+   "date": "2025-08-23"
+  },
+  "PRB-02": {
+   "name": "プレミアムブースター ONE PIECE CARD THE BEST vol.2",
+   "date": "2025-07-26"
+  },
+  "OP-12": {
+   "name": "ブースターパック 師弟の絆",
+   "date": "2025-05-31"
+  },
+  "OP-11": {
+   "name": "ブースターパック 神速の拳",
+   "date": "2025-03-01"
+  },
+  "EB-02": {
+   "name": "エクストラブースター  Anime 25th collection",
+   "date": "2025-01-25"
+  },
+  "OP-10": {
+   "name": "ブースターパック 王族の血統",
+   "date": "2024-11-30"
+  },
+  "OP-09": {
+   "name": "ブースターパック 新たなる皇帝",
+   "date": "2024-08-31"
+  },
+  "PRB-01": {
+   "name": "プレミアムブースター ONE PIECE CARD THE BEST",
+   "date": "2024-07-27"
+  },
+  "OP-08": {
+   "name": "ブースターパック 二つの伝説",
+   "date": "2024-05-25"
+  },
+  "OP-07": {
+   "name": "ブースターパック 500年後の未来",
+   "date": "2024-02-24"
+  },
+  "EB-01": {
+   "name": "エクストラブースター メモリアルコレクション",
+   "date": "2024-01-27"
+  },
+  "OP-06": {
+   "name": "ブースターパック 双璧の覇者",
+   "date": "2023-11-25"
+  },
+  "OP-05": {
+   "name": "ブースターパック 新時代の主役",
+   "date": "2023-08-26"
+  },
+  "OP-04": {
+   "name": "ブースターパック 謀略の王国",
+   "date": "2023-05-27"
+  },
+  "OP-03": {
+   "name": "ブースターパック 強大な敵",
+   "date": "2023-02-11"
+  },
+  "OP-02": {
+   "name": "ブースターパック 頂上決戦",
+   "date": "2022-11-04"
+  },
+  "OP-01": {
+   "name": "ブースターパック ROMANCE DAWN",
+   "date": "2022-07-22"
+  },
+  "ST-37": {
+   "name": "スタートデッキ 砂漠の王女と海賊たち",
+   "date": "2026-12-19"
+  },
+  "ST-36": {
+   "name": "スタートデッキ 黄 ユースタス・キッド",
+   "date": "2026-07-11"
+  },
+  "ST-35": {
+   "name": "スタートデッキ 赤黒 サボ",
+   "date": "2026-07-11"
+  },
+  "ST-34": {
+   "name": "スタートデッキ 紫 シャーロット・カタクリ",
+   "date": "2026-07-11"
+  },
+  "ST-33": {
+   "name": "スタートデッキ 青 クザン",
+   "date": "2026-07-11"
+  },
+  "ST-32": {
+   "name": "スタートデッキ 緑 ロロノア・ゾロ",
+   "date": "2026-07-11"
+  },
+  "ST-31": {
+   "name": "スタートデッキ 赤 モンキー・D・ルフィ",
+   "date": "2026-07-11"
+  },
+  "ST-30": {
+   "name": "スタートデッキEX ルフィ&amp;エース",
+   "date": "2026-04-11"
+  },
+  "ST-29": {
+   "name": "スタートデッキ EGGHEAD",
+   "date": "2025-12-20"
+  },
+  "ST-28": {
+   "name": "スタートデッキ 緑黄 ヤマト",
+   "date": "2025-06-28"
+  },
+  "ST-27": {
+   "name": "スタートデッキ 黒 マーシャル・D・ティーチ",
+   "date": "2025-06-28"
+  },
+  "ST-26": {
+   "name": "スタートデッキ 紫黒 モンキー・D・ルフィ",
+   "date": "2025-06-28"
+  },
+  "ST-25": {
+   "name": "スタートデッキ 青 バギー",
+   "date": "2025-06-28"
+  },
+  "ST-24": {
+   "name": "スタートデッキ 緑 ジュエリー・ボニー",
+   "date": "2025-06-28"
+  },
+  "ST-23": {
+   "name": "スタートデッキ 赤 シャンクス",
+   "date": "2025-06-28"
+  },
+  "ST-22": {
+   "name": "スタートデッキ エース&amp;ニューゲート",
+   "date": "2025-04-26"
+  },
+  "ST-21": {
+   "name": "スタートデッキEX ギア5",
+   "date": "2024-12-21"
+  },
+  "ST-20": {
+   "name": "スタートデッキ 黄 シャーロット・カタクリ",
+   "date": "2024-07-13"
+  },
+  "ST-19": {
+   "name": "スタートデッキ 黒 スモーカー",
+   "date": "2024-07-13"
+  },
+  "ST-18": {
+   "name": "スタートデッキ 紫 モンキー・D・ルフィ",
+   "date": "2024-07-13"
+  },
+  "ST-17": {
+   "name": "スタートデッキ 青 ドンキホーテ・ドフラミンゴ",
+   "date": "2024-07-13"
+  },
+  "ST-16": {
+   "name": "スタートデッキ 緑 ウタ",
+   "date": "2024-07-13"
+  },
+  "ST-15": {
+   "name": "スタートデッキ 赤 エドワード・ニューゲート",
+   "date": "2024-07-13"
+  },
+  "ST-14": {
+   "name": "スタートデッキ 3D2Y",
+   "date": "2024-04-27"
+  },
+  "ST-13": {
+   "name": "アルティメットデッキ 3兄弟の絆",
+   "date": "2023-12-23"
+  },
+  "ST-12": {
+   "name": "スタートデッキ ゾロ&amp;サンジ",
+   "date": "2023-10-28"
+  },
+  "ST-11": {
+   "name": "スタートデッキ Side ウタ",
+   "date": "2023-10-07"
+  },
+  "ST-10": {
+   "name": "アルティメットデッキ “三船長”集結",
+   "date": "2023-07-29"
+  },
+  "ST-09": {
+   "name": "スタートデッキ Side ヤマト",
+   "date": "2023-03-25"
+  },
+  "ST-08": {
+   "name": "スタートデッキ Side モンキー・D・ルフィ",
+   "date": "2023-03-25"
+  },
+  "ST-07": {
+   "name": "スタートデッキ ビッグ・マム海賊団",
+   "date": "2023-01-21"
+  },
+  "ST-06": {
+   "name": "スタートデッキ 海軍",
+   "date": "2022-09-30"
+  },
+  "ST-05": {
+   "name": "スタートデッキ ONE PIECE FILM edition",
+   "date": "2022-08-06"
+  },
+  "ST-04": {
+   "name": "スタートデッキ 百獣海賊団",
+   "date": "2022-07-08"
+  },
+  "ST-03": {
+   "name": "スタートデッキ 王下七武海",
+   "date": "2022-07-08"
+  },
+  "ST-02": {
+   "name": "スタートデッキ 最悪の世代",
+   "date": "2022-07-08"
+  },
+  "ST-01": {
+   "name": "スタートデッキ 麦わらの一味",
+   "date": "2022-07-08"
+  }
+ },
+ "en": {
+  "OP-18": {
+   "name": "BOOSTER PACK  -THE DOMINANCE OF GOD-",
+   "date": "2026-11-20"
+  },
+  "EB-05": {
+   "name": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2-",
+   "date": "2026-10-30"
+  },
+  "OP-17": {
+   "name": "BOOSTER PACK -THE WORLD’S STRONGEST WARRIORS-",
+   "date": "2026-08-28"
+  },
+  "OP-16": {
+   "name": "BOOSTER PACK -THE TIME OF BATTLE-",
+   "date": "2026-06-12"
+  },
+  "OP15-EB04": {
+   "name": "BOOSTER PACK -ADVENTURE ON KAMI’S ISLAND-",
+   "date": "2026-04-03"
+  },
+  "EB-03": {
+   "name": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION-",
+   "date": "2026-02-20"
+  },
+  "OP14-EB04": {
+   "name": "BOOSTER PACK -THE AZURE SEA’S SEVEN-",
+   "date": "2026-01-16"
+  },
+  "OP-13": {
+   "name": "BOOSTER PACK -CARRYING ON HIS WILL-",
+   "date": "2025-11-07"
+  },
+  "PRB-02": {
+   "name": "PREMIUM BOOSTER -ONE PIECE CARD THE BEST vol.2-",
+   "date": "2025-10-03"
+  },
+  "OP-12": {
+   "name": "BOOSTER PACK -LEGACY OF THE MASTER-",
+   "date": "2025-08-22"
+  },
+  "OP-11": {
+   "name": "BOOSTER PACK -A FIST OF DIVINE SPEED-",
+   "date": "2025-06-06"
+  },
+  "EB-02": {
+   "name": "EXTRA BOOSTER -Anime 25th Collection-",
+   "date": "2025-05-09"
+  },
+  "OP-10": {
+   "name": "BOOSTER PACK -ROYAL BLOOD-",
+   "date": "2025-03-21"
+  },
+  "OP-09": {
+   "name": "BOOSTER PACK -EMPERORS IN THE NEW WORLD-",
+   "date": "2024-12-13"
+  },
+  "PRB-01": {
+   "name": "PREMIUM BOOSTER -ONE PIECE CARD THE BEST-",
+   "date": "2024-11-08"
+  },
+  "OP-08": {
+   "name": "BOOSTER PACK -TWO LEGENDS-",
+   "date": "2024-09-13"
+  },
+  "OP-07": {
+   "name": "BOOSTER PACK -500 YEARS IN THE FUTURE-",
+   "date": "2024-06-28"
+  },
+  "EB-01": {
+   "name": "EXTRA BOOSTER -MEMORIAL COLLECTION-",
+   "date": "2024-05-03"
+  },
+  "OP-06": {
+   "name": "BOOSTER PACK -WINGS OF THE CAPTAIN-",
+   "date": "2024-03-15"
+  },
+  "OP-05": {
+   "name": "BOOSTER PACK -Awakening of the New Era-",
+   "date": "2023-12-08"
+  },
+  "OP-04": {
+   "name": "BOOSTER PACK -KINGDOMS OF INTRIGUE-",
+   "date": "2023-09-22"
+  },
+  "OP-03": {
+   "name": "BOOSTER PACK -PILLARS OF STRENGTH-",
+   "date": "2023-06-30"
+  },
+  "OP-02": {
+   "name": "BOOSTER PACK -PARAMOUNT WAR-",
+   "date": "2023-03-10"
+  },
+  "OP-01": {
+   "name": "BOOSTER PACK -ROMANCE DAWN-",
+   "date": "2022-12-02"
+  },
+  "ST-38": {
+   "name": "STARTER DECK -Baroque Works-",
+   "date": "2026-12-19"
+  },
+  "ST-37": {
+   "name": "STARTER DECK -The Desert Princess and the Pirates-",
+   "date": "2026-12-18"
+  },
+  "ST-36": {
+   "name": "STARTER DECK -YELLOW Eustass&quot;Captain&quot;Kid-",
+   "date": "2026-07-31"
+  },
+  "ST-35": {
+   "name": "STARTER DECK -RED/BLACK Sabo-",
+   "date": "2026-07-31"
+  },
+  "ST-34": {
+   "name": "STARTER DECK -PURPLE Charlotte Katakuri-",
+   "date": "2026-07-31"
+  },
+  "ST-33": {
+   "name": "STARTER DECK -BLUE Kuzan-",
+   "date": "2026-07-31"
+  },
+  "ST-32": {
+   "name": "STARTER DECK -GREEN Roronoa Zoro-",
+   "date": "2026-07-31"
+  },
+  "ST-31": {
+   "name": "STARTER DECK -RED Monkey.D.Luffy-",
+   "date": "2026-07-31"
+  },
+  "ST-30": {
+   "name": "STARTER DECK EX -Luffy &amp; Ace-",
+   "date": "2026-06-12"
+  },
+  "ST-29": {
+   "name": "STARTER DECK -Egghead-",
+   "date": "2026-01-16"
+  },
+  "ST-22": {
+   "name": "STARTER DECK -Ace &amp; Newgate-",
+   "date": "2025-09-05"
+  },
+  "ST-28": {
+   "name": "STARTER DECK -GREEN/YELLOW Yamato-",
+   "date": "2025-06-06"
+  },
+  "ST-27": {
+   "name": "STARTER DECK -BLACK Marshall.D.Teach-",
+   "date": "2025-06-06"
+  },
+  "ST-26": {
+   "name": "STARTER DECK -PURPLE/BLACK Monkey.D.Luffy-",
+   "date": "2025-06-06"
+  },
+  "ST-25": {
+   "name": "STARTER DECK -BLUE Buggy-",
+   "date": "2025-06-06"
+  },
+  "ST-24": {
+   "name": "STARTER DECK -GREEN Jewelry Bonney-",
+   "date": "2025-06-06"
+  },
+  "ST-23": {
+   "name": "STARTER DECK -RED Shanks-",
+   "date": "2025-06-06"
+  },
+  "ST-21": {
+   "name": "STARTER DECK EX -GEAR5-",
+   "date": "2025-03-14"
+  },
+  "ST-20": {
+   "name": "STARTER DECK -Yellow Charlotte Katakuri-",
+   "date": "2024-10-25"
+  },
+  "ST-19": {
+   "name": "STARTER DECK -Black Smoker-",
+   "date": "2024-10-25"
+  },
+  "ST-18": {
+   "name": "STARTER DECK -Purple Monkey.D.Luffy-",
+   "date": "2024-10-25"
+  },
+  "ST-17": {
+   "name": "STARTER DECK -Blue Donquixote Doflamingo-",
+   "date": "2024-10-25"
+  },
+  "ST-16": {
+   "name": "STARTER DECK -Green Uta-",
+   "date": "2024-10-25"
+  },
+  "ST-15": {
+   "name": "STARTER DECK -Red Edward.Newgate-",
+   "date": "2024-10-25"
+  },
+  "ST-14": {
+   "name": "STARTER DECK -3D2Y-",
+   "date": "2024-08-16"
+  },
+  "ST-13": {
+   "name": "ULTRA DECK -The Three Brothers-",
+   "date": "2024-04-19"
+  },
+  "ST-12": {
+   "name": "STARTER DECK -Zoro and Sanji-",
+   "date": "2024-03-15"
+  },
+  "ST-11": {
+   "name": "STARTER DECK -Uta-",
+   "date": "2024-02-02"
+  },
+  "ST-10": {
+   "name": "ULTRA DECK -The Three Captains-",
+   "date": "2023-11-10"
+  },
+  "ST-09": {
+   "name": "STARTER DECK -Yamato-",
+   "date": "2023-08-11"
+  },
+  "ST-08": {
+   "name": "STARTER DECK -Monkey D. Luffy-",
+   "date": "2023-08-11"
+  },
+  "ST-07": {
+   "name": "STARTER DECK -Big Mom Pirates-",
+   "date": "2023-06-30"
+  },
+  "ST-06": {
+   "name": "STARTER DECK -Absolute Justice-",
+   "date": "2023-03-10"
+  },
+  "ST-05": {
+   "name": "STARTER DECK ONE PIECE FILM edition",
+   "date": "2023-02-03"
+  },
+  "ST-04": {
+   "name": "STARTER DECK -Animal Kingdom Pirates-",
+   "date": "2022-12-02"
+  },
+  "ST-03": {
+   "name": "STARTER DECK -The Seven Warlords of the Sea-",
+   "date": "2022-12-02"
+  },
+  "ST-02": {
+   "name": "STARTER DECK -Worst Generation-",
+   "date": "2022-12-02"
+  },
+  "ST-01": {
+   "name": "STARTER DECK -Straw Hat Crew-",
+   "date": "2022-12-02"
+  }
+ }
+}

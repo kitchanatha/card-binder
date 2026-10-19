@@ -1,0 +1,9 @@
+# API keys and other private files: never commit
+secrets/
+.env
+.env.*
+
+# local tooling
+node_modules/
+.vercel/
+.claude/
