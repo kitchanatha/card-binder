@@ -86,6 +86,9 @@
   .pricebox strong { display: block; font-size: 22px; margin: 2px 0 6px; }
   .prow { display: flex; justify-content: space-between; gap: 12px; padding: 3px 0; border-top: 1px dashed var(--border); }
   .prow span { color: var(--muted); }
+  .pricebox .trend { font-size: 12px; font-style: normal; font-weight: 600; margin-left: 6px; color: var(--muted); }
+  .pricebox .trend.up { color: var(--ok); }
+  .pricebox .trend.down { color: var(--accent); }
   .pricebox .links { display: flex; gap: 8px; flex-wrap: wrap; }
   .pricebox .links .btn { font-size: 13px; padding: 6px 12px; }
   .pricebox small { display: block; color: var(--muted); margin-top: 6px; font-size: 11px; }
@@ -167,7 +170,8 @@ const I18N = {
     priceNote: 'Averages of recent sales, not one specific sale. Prices change daily.',
     psaTitle: 'PSA 10 sold prices', psaText: 'Graded prices aren’t in the free data feeds yet. See what PSA 10 copies actually sold for:',
     ebaySold: 'eBay sold', mercariSold: 'Mercari sold',
-    psaAvg: 'Average sold', psaMedian: 'Median sold', psaSales: 'Sales counted', psaLast: 'Last sale', psaLinks: 'See the individual sold listings:',
+    psaMarket: 'Market price (last 7 days)', psaUp: 'Trending up', psaDown: 'Trending down', psaStable: 'Stable',
+    psaAvg: 'Average, all tracked sales', psaMedian: 'Median, all tracked sales', psaSales: 'Sales tracked', psaLast: 'Last sale', psaLinks: 'See the individual sold listings:',
     'psa_not-found': 'Couldn’t match this card in the PSA price data.', 'psa_no-psa10-sales': 'No recent PSA 10 sales found.',
     'psa_bad-key': 'The PSA price API key was rejected.', psa_limit: 'Daily PSA price lookups used up. Try again tomorrow.',
     psa_error: 'PSA price lookup failed.',
@@ -197,7 +201,8 @@ const I18N = {
     priceNote: '直近の取引の平均値で、個別の成約価格ではありません。価格は毎日変動します。',
     psaTitle: 'PSA10 の成約価格', psaText: '鑑定品の価格は無料データにまだ含まれていません。PSA10 の実際の落札・販売価格はこちら:',
     ebaySold: 'eBay 落札済み', mercariSold: 'メルカリ 売り切れ',
-    psaAvg: '平均成約価格', psaMedian: '成約価格の中央値', psaSales: '集計件数', psaLast: '最終成約日', psaLinks: '個別の成約履歴はこちら:',
+    psaMarket: '相場（直近7日）', psaUp: '上昇傾向', psaDown: '下降傾向', psaStable: '横ばい',
+    psaAvg: '平均（全成約）', psaMedian: '中央値（全成約）', psaSales: '集計件数', psaLast: '最終成約日', psaLinks: '個別の成約履歴はこちら:',
     'psa_not-found': 'PSA 価格データでこのカードが見つかりませんでした。', 'psa_no-psa10-sales': '最近の PSA10 の成約はありません。',
     'psa_bad-key': 'PSA 価格 API キーが無効です。', psa_limit: '本日の PSA 価格の取得上限に達しました。明日またお試しください。',
     psa_error: 'PSA 価格の取得に失敗しました。',
@@ -603,7 +608,9 @@ async function loadPsa10(q) {
   if (r.ok && (r.avg ?? r.median ?? r.market) != null) {
     const main = r.market ?? r.avg ?? r.median;
     const rows = [['psaAvg', r.avg], ['psaMedian', r.median]].filter(([, v]) => v != null && v !== main);
-    slot.innerHTML = `<strong>${esc(fmtMoney(main, r.currency))}</strong>
+    const trend = { up: ['psaUp', '▲'], down: ['psaDown', '▼'], stable: ['psaStable', '▶'] }[r.trend];
+    slot.innerHTML = `${r.market != null ? `<small>${t('psaMarket')}</small>` : ''}
+      <strong>${esc(fmtMoney(main, r.currency))}${trend ? ` <em class="trend ${r.trend}">${trend[1]} ${t(trend[0])}</em>` : ''}</strong>
       ${rows.map(([k, v]) => `<div class="prow"><span>${t(k)}</span><b>${esc(fmtMoney(v, r.currency))}</b></div>`).join('')}
       ${r.sales != null ? `<div class="prow"><span>${t('psaSales')}</span><b>${esc(r.sales)}</b></div>` : ''}
       ${r.lastSale ? `<div class="prow"><span>${t('psaLast')}</span><b>${esc(fmtDate(r.lastSale))}</b></div>` : ''}

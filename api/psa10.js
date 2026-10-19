@@ -58,6 +58,7 @@ module.exports = async (req, res) => {
     const data = !p ? { ok: false, reason: card ? 'no-psa10-sales' : 'not-found' } : {
       ok: true, currency: 'USD',
       market: num(p.smartMarketPrice?.price) ?? num(p.marketPrice7Day),
+      trend: ['up', 'down', 'stable'].includes(p.marketTrend) ? p.marketTrend : null,
       avg: num(p.averagePrice), median: num(p.medianPrice), sales: num(p.count),
       lastSale: p.lastSaleDate || null, updated: card.ebay.updatedAt || null,
     };
