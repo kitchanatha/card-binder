@@ -9,7 +9,8 @@
     "update-pokemon-packs": "node tools/build-pokemon-packs.js",
     "warm-images": "node tools/warm-op-images.js",
     "update-op-index": "node tools/build-op-index.js",
-    "build-icons": "node tools/build-icons.js"
+    "build-icons": "node tools/build-icons.js",
+    "test-packsim": "node tools/test-packsim.js"
   },
   "engines": {
     "node": ">=20"

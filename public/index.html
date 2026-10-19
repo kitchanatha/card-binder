@@ -122,6 +122,86 @@
   .colltable td { font-weight: 700; }
   .row { display: flex; flex-wrap: wrap; gap: 8px; }
   .collmsg { margin: 8px 0 0; font-size: 13px; color: var(--ok); }
+  /* ---------- pack opening simulator (always dark, like a stage) ---------- */
+  .simrow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: -6px 0 20px; }
+  .simrow .muted { margin: 0; }
+  .simbtn { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .simbtn:hover, .simbtn:focus-visible { filter: brightness(1.08); }
+  .packsim { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; border-radius: 0;
+    background: radial-gradient(ellipse at 50% 35%, #2a2723, #0e0d0c 70%); color: #f1efe9; overflow: hidden; }
+  .packsim::backdrop { background: #000; }
+  .psclose { position: absolute; z-index: 3; top: calc(12px + env(safe-area-inset-top, 0px)); right: max(12px, env(safe-area-inset-right, 0px));
+    width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(255,255,255,.12); color: #fff; font-size: 22px; cursor: pointer; }
+  .psstage { position: absolute; inset: 0; bottom: calc(76px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column;
+    align-items: center; justify-content: flex-start; gap: 12px; overflow: auto;
+    padding: calc(56px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 8px max(16px, env(safe-area-inset-left, 0px)); }
+  .psfoot { position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px;
+    padding: 12px max(16px, env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+  .psfoot .btn { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.18); color: #f1efe9; }
+  .psfoot .psmain { background: #c2410c; border-color: #c2410c; color: #fff; }
+  .pshint { margin: 0; font-size: 14px; color: #c9c5bc; text-align: center; }
+  .psnote { margin: 0; font-size: 12px; color: #8f8a80; text-align: center; max-width: 520px; }
+  .pscount { margin: 0; font-size: 12px; letter-spacing: .08em; color: #8f8a80; font-variant-numeric: tabular-nums; }
+  /* the pack: two copies of the art, clipped into a top strip and a body that come apart */
+  .pspack { position: relative; width: min(240px, 60vw); aspect-ratio: 3/5; border: 0; padding: 0; background: none; cursor: pointer;
+    filter: drop-shadow(0 18px 30px rgba(0,0,0,.6)); }
+  .pspack > span { position: absolute; inset: 0; display: grid; place-items: center; transition: transform .55s cubic-bezier(.2,.7,.3,1), opacity .55s; }
+  .pspack img { width: 100%; height: 100%; object-fit: contain; }
+  .pstop { clip-path: inset(0 0 82% 0); }
+  .psbody { clip-path: inset(18% 0 0 0); }
+  .pspack:hover .psbody, .pspack:hover .pstop { transform: translateY(-4px); }
+  .pspack.tearing .pstop { transform: translate(-30px, -120px) rotate(-14deg); opacity: 0; }
+  .pspack.tearing .psbody { transform: translateY(60px) scale(.96); opacity: 0; }
+  .psfake { width: 100%; height: 100%; border-radius: 10px; background: linear-gradient(160deg, #c2410c, #7c2d12); display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 8px; text-align: center; padding: 16px; }
+  .psfake span { font-weight: 800; letter-spacing: .08em; }
+  /* a card: back and front faces, flipped in 3D */
+  .pscard { position: relative; width: min(300px, 68vw, 46dvh); aspect-ratio: 63/88; border: 0; padding: 0; background: none; cursor: pointer; perspective: 1200px; }
+  .psinner { position: absolute; inset: 0; transform-style: preserve-3d; transition: transform .55s cubic-bezier(.2,.7,.3,1); }
+  .pscard.flipped .psinner { transform: rotateY(180deg); }
+  .psback, .psfront { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 14px; overflow: hidden; }
+  .psback { display: grid; place-items: center; border: 7px solid #efe6d8;
+    background: radial-gradient(circle, #c2410c 0 17%, transparent 18%), repeating-linear-gradient(45deg, #1b2440 0 10px, #222c4d 10px 20px); }
+  .psback i { font-style: normal; font-size: 40px; color: #fff; }
+  .psfront { transform: rotateY(180deg); background: #222; }
+  .psfront img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .psnoimg { display: grid; place-items: center; height: 100%; padding: 12px; text-align: center; }
+  .psname { margin: 0; min-height: 2.6em; text-align: center; font-weight: 700; }
+  .psname small { display: block; font-weight: 400; color: #a29d93; }
+  /* rarity glow once flipped: purple (RR/L), gold (IR/UR/SR/alt), rainbow (SIR/HR/SEC/manga) */
+  .pscard.flipped.t2 .psfront { box-shadow: 0 0 0 3px #a78bfa, 0 0 40px 8px rgba(167,139,250,.55); }
+  .pscard.flipped.t3 .psfront { box-shadow: 0 0 0 3px #fbbf24, 0 0 50px 12px rgba(251,191,36,.6); }
+  .pscard.flipped.t4 .psfront { box-shadow: 0 0 0 3px #fff, 0 0 60px 16px rgba(244,114,182,.6), 0 0 110px 30px rgba(96,165,250,.45); }
+  .pscard.rev .psfront::after, .pstile.rev .img::after { content: ''; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: soft-light;
+    background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,.55) 45%, rgba(147,197,253,.5) 55%, transparent 80%); }
+  .psburst { position: absolute; inset: -40%; z-index: -1; border-radius: 50%; opacity: 0; pointer-events: none;
+    background: conic-gradient(from 0deg, #f472b6, #fbbf24, #34d399, #60a5fa, #a78bfa, #f472b6); filter: blur(28px); }
+  .pscard.flipped .psburst { opacity: .75; }
+  @media (prefers-reduced-motion: no-preference) {
+    .pscard.flipped.t3, .pscard.flipped.t4 { animation: pspop .5s .45s both; }
+    .pscard.flipped .psburst { animation: psspin 6s linear infinite; }
+  }
+  @keyframes pspop { 0% { transform: scale(1); } 40% { transform: scale(1.07); } 100% { transform: scale(1); } }
+  @keyframes psspin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .psinner, .pspack > span { transition: none; } }
+  /* summary */
+  /* centred with auto margins (not justify-content) so tall content still scrolls to its top */
+  .psstage > :first-child { margin-top: auto; } .psstage > :last-child { margin-bottom: auto; }
+  .pssum { width: min(900px, 100%); display: grid; gap: 14px; align-content: start; }
+  .pssum h2 { margin: 0; text-align: center; font-size: 22px; }
+  .psvalue { text-align: center; display: grid; gap: 2px; }
+  .psvalue span { font-size: 12px; color: #a29d93; text-transform: uppercase; letter-spacing: .06em; }
+  .psvalue strong { font-size: 30px; color: #fb923c; font-variant-numeric: tabular-nums; }
+  .psvalue small { color: #c9c5bc; }
+  .psgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 10px; }
+  .pstile { border: 0; padding: 0; background: none; color: inherit; text-align: left; cursor: pointer; display: grid; gap: 3px; min-width: 0; }
+  .pstile .img { position: relative; display: block; aspect-ratio: 63/88; border-radius: 7px; overflow: hidden; background: #2a2826; }
+  .pstile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .pstile.t2 .img { box-shadow: 0 0 0 2px #a78bfa; } .pstile.t3 .img { box-shadow: 0 0 0 2px #fbbf24; }
+  .pstile.t4 .img { box-shadow: 0 0 0 2px #fff, 0 0 18px rgba(244,114,182,.7); }
+  .pslabel { font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .psprice { font-size: 12px; font-weight: 700; color: #fb923c; font-variant-numeric: tabular-nums; }
+  .psnew { position: absolute; top: 5px; right: 5px; font-size: 9px; font-weight: 800; padding: 2px 5px; border-radius: 4px; background: #16a34a; color: #fff; }
   .cardhits { margin-top: 28px; }
   .cardhits h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 12px; }
   .cardhits h2 .n { color: var(--accent); margin-left: 4px; }
@@ -999,6 +1079,7 @@ async function renderSet(gameKey, setId, openCardId) {
   app.innerHTML = `<div class="crumbs"><a href="#/">${t('home')}</a> › <a href="#/${gameKey}">${esc(g.name[lang])}</a> ›</div>
     <div class="sethead">${setMeta?.pack ? `<img class="packhero" src="${esc(setMeta.pack)}" alt="" onerror="this.remove()">` : ''}
       <div><h1>${esc(title)}</h1><p class="sub">${[code, `${data.cards.length} ${t('cards')}`, fmtRelease(data.releaseDate || setMeta?.date)].filter(Boolean).map(esc).join(' · ')}</p></div></div>
+    <div class="simrow" id="simrow" hidden></div>
     <section class="top" id="top" aria-label="${t('topTitle')}"><h2>${t('topTitle')}</h2><p class="topwait">${t('topLoading')}</p></section>
     <div class="toolbar">
       <input class="search" id="q" placeholder="${t('searchCards')}">
@@ -1063,6 +1144,11 @@ async function renderSet(gameKey, setId, openCardId) {
       if (location.hash.startsWith(setHash + '/')) history.replaceState(null, '', setHash);   // not if we've already moved on
     }, { once: true });
   }
+
+  // Pack simulator (packsim.js): offered once rarities are known, for sets sold in booster packs
+  Promise.allSettled(data.later || []).then(() => {
+    if (tok === renderToken) window.mountPackSim?.({ g, gameKey, data, setId, setMeta, key });
+  });
 
   // Most valuable: ranked once prices (and, for Pokémon, rarities) have arrived
   const top = document.getElementById('top');
@@ -1251,5 +1337,7 @@ function route() {
 window.addEventListener('hashchange', route);
 route();
 </script>
+<script src="packsim-core.js"></script>
+<script src="packsim.js"></script>
 </body>
 </html>

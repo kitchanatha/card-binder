@@ -1,6 +1,6 @@
 // Card Binder service worker: makes the app installable, opens instantly, and works offline for
 // anything already viewed. Bump VERSION to drop old caches after a change to this file.
-const VERSION = 'v2';
+const VERSION = 'v3';
 const SHELL = `cb-shell-${VERSION}`, DATA = `cb-data-${VERSION}`, IMG = `cb-img-${VERSION}`;
 const SHELL_FILES = ['./', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon.svg', 'op-sets.json', 'pokemon-packs.json', 'privacy.html'];
 const MAX_IMAGES = 2500;   // ~20 KB each → roughly 50 MB at most
