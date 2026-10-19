@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy · Card Binder</title>
+<style>
+  :root { --bg: #f6f5f2; --surface: #ffffff; --text: #1d1c1a; --muted: #6b675f; --border: #e2dfd8; --accent: #c2410c; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #151413; --surface: #1f1e1c; --text: #f1efe9; --muted: #a29d93; --border: #34322e; --accent: #fb923c; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.65 system-ui, -apple-system, "Segoe UI", "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding-block: 32px 64px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  a { color: var(--accent); }
+  .back { font-size: 14px; text-decoration: none; }
+  h1 { font-size: 30px; letter-spacing: -.02em; margin: 16px 0 4px; text-wrap: balance; }
+  h2 { font-size: 19px; margin: 32px 0 8px; }
+  .updated { color: var(--muted); font-size: 14px; margin: 0 0 24px; }
+  .summary { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; }
+  .summary ul { margin: 8px 0 0; padding-left: 20px; }
+  li { margin: 4px 0; }
+  code { font-size: .9em; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1px 5px; }
+  hr { border: 0; border-top: 1px solid var(--border); margin: 40px 0; }
+  .ja { font-size: 15px; }
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="./">← Card Binder</a>
+  <h1>Privacy policy</h1>
+  <p class="updated">Last updated 20 October 2026</p>
+
+  <div class="summary">
+    <strong>In short:</strong> Card Binder has no accounts and keeps no database of users.
+    <ul>
+      <li>Your collection is saved only in your own browser.</li>
+      <li>If you turn on Google Drive sync, your collection is saved as one file in <em>your</em> Google Drive. Card Binder can see only that file.</li>
+      <li>We don't sell, share or analyse personal data, and there are no ads or trackers.</li>
+    </ul>
+  </div>
+
+  <h2>Who runs Card Binder</h2>
+  <p>Card Binder (<a href="https://card-binder-xi.vercel.app/">card-binder-xi.vercel.app</a>) is a free, non-commercial fan project
+    for browsing Pokémon and ONE PIECE trading cards. It is not affiliated with The Pokémon Company, Nintendo, Bandai or Shueisha.</p>
+
+  <h2>Your collection</h2>
+  <p>The cards you mark as owned, your language choice and similar settings are stored in your browser's local storage on your device.
+    They are not sent to us. Clearing your browser data deletes them, so use <strong>Export file</strong> in <em>My collection</em> to keep a backup.
+    Exported files stay wherever you save them.</p>
+
+  <h2>Google Drive sync (optional)</h2>
+  <p>If you choose <strong>Connect Google Drive</strong>, Google asks for your permission and gives Card Binder access with the
+    <code>drive.file</code> scope. This only allows Card Binder to create, read and update files it created itself; it cannot see any other file in your Drive.</p>
+  <ul>
+    <li>Card Binder creates one file, <code>card-binder-collection.json</code>, containing the IDs of the cards you own and when you marked them.</li>
+    <li>The sign-in happens in your browser. The access token stays in your browser's memory, expires after about an hour, and is never sent to Card Binder's server.</li>
+    <li>Card Binder does not receive your name, email address, contacts or any other Google account data.</li>
+    <li>You can disconnect at any time with <strong>Disconnect</strong> in <em>My collection</em>, or remove access at
+      <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. Deleting the file from your Drive deletes the synced copy.</li>
+  </ul>
+  <p>Card Binder's use and transfer of information received from Google APIs adheres to the
+    <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+
+  <h2>Information sent to other services</h2>
+  <p>To show cards, images and prices, your browser loads data directly from these services, which see the usual technical
+    information any website receives (such as your IP address and browser type) under their own privacy policies:</p>
+  <ul>
+    <li>Card data and images: TCGdex, pokemontcg.io, GitHub (punk-records data), optcgapi, TCGplayer's image server, and the official ONE PIECE Card Game site (through our image server).</li>
+    <li>PSA 10 prices: when you open a Pokémon card, our server asks Pokémon Price Tracker for that card's prices. Only the card's name, number and set are sent, nothing about you.</li>
+    <li>Hosting: the site runs on Vercel, which keeps standard server logs for security and reliability.</li>
+  </ul>
+
+  <h2>Links to other sites</h2>
+  <p>Support on Ko-fi, Request a feature and Report a bug open Ko-fi and GitHub. Anything you post there, such as a bug report on GitHub,
+    is public and handled under those sites' own policies.</p>
+
+  <h2>Children</h2>
+  <p>Card Binder collects no personal information from anyone, including children.</p>
+
+  <h2>Changes and contact</h2>
+  <p>If this policy changes, the date at the top will change too. For questions, open an issue at
+    <a href="https://github.com/kitchanatha/card-binder/issues">github.com/kitchanatha/card-binder/issues</a> or use the
+    support email shown on Google's sign-in screen.</p>
+
+  <hr>
+
+  <div class="ja" lang="ja">
+    <h2>プライバシーポリシー（概要）</h2>
+    <ul>
+      <li>カードバインダーにはアカウント登録がなく、利用者のデータベースも持っていません。</li>
+      <li>コレクションはお使いのブラウザ内にのみ保存されます。</li>
+      <li>Google ドライブ同期（任意）を使うと、コレクションはあなた自身の Google ドライブに 1 つのファイル（<code>card-binder-collection.json</code>）として保存されます。カードバインダーが見られるのはそのファイルだけで、メールアドレスなどのアカウント情報は受け取りません。</li>
+      <li>個人データの販売・共有・分析は行わず、広告やトラッカーもありません。</li>
+      <li>お問い合わせは <a href="https://github.com/kitchanatha/card-binder/issues">GitHub</a> までお願いします。</li>
+    </ul>
+  </div>
+</main>
+</body>
+</html>

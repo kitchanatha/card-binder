@@ -290,7 +290,7 @@ const I18N = {
     topTitle: 'Most valuable', topLoading: 'Finding the most valuable cards…', tcgEnEdition: 'TCGplayer (English edition)',
     psaMarket: 'Market price (last 7 days)', psaUp: 'Trending up', psaDown: 'Trending down', psaStable: 'Stable',
     footAbout: 'Card Binder is a free fan project. Ideas and bug reports help make it better.',
-    donate: 'Support on Ko-fi', requestFeature: 'Request a feature', reportBug: 'Report a bug',
+    privacy: 'Privacy policy', donate: 'Support on Ko-fi', requestFeature: 'Request a feature', reportBug: 'Report a bug',
     reportCard: 'Report a problem with this card', ghNote: 'Requests and reports open on GitHub (a free account is needed to post).',
     viewFull: 'Full image', zoomIn: 'Zoom in', zoomOut: 'Zoom out', zoomFit: 'Fit', close: 'Close',
     zoomHint: 'Scroll, pinch or double-click to zoom · drag to move', zoomHintTouch: 'Pinch or double-tap to zoom · drag to move', fullLoading: 'loading full resolution…',
@@ -341,7 +341,7 @@ const I18N = {
     topTitle: '高額カード', topLoading: '高額カードを集計中…', tcgEnEdition: 'TCGplayer（英語版の相場）',
     psaMarket: '相場（直近7日）', psaUp: '上昇傾向', psaDown: '下降傾向', psaStable: '横ばい',
     footAbout: 'カードバインダーは無料のファンプロジェクトです。ご要望や不具合の報告をお待ちしています。',
-    donate: 'Ko-fi で応援する', requestFeature: '機能をリクエスト', reportBug: '不具合を報告',
+    privacy: 'プライバシーポリシー', donate: 'Ko-fi で応援する', requestFeature: '機能をリクエスト', reportBug: '不具合を報告',
     reportCard: 'このカードの問題を報告', ghNote: 'リクエストと報告は GitHub で受け付けています（投稿には無料アカウントが必要です）。',
     viewFull: '拡大表示', zoomIn: '拡大', zoomOut: '縮小', zoomFit: '全体', close: '閉じる',
     zoomHint: 'スクロール・ピンチ・ダブルクリックで拡大 · ドラッグで移動', zoomHintTouch: 'ピンチ・ダブルタップで拡大 · ドラッグで移動', fullLoading: '高解像度を読み込み中…',
@@ -864,7 +864,7 @@ function chrome() {
       <a class="btn" target="_blank" rel="noopener" href="${esc(issueUrl('feature_request', { game: gameField(game) }))}">💡 ${t('requestFeature')}</a>
       <a class="btn" target="_blank" rel="noopener" href="${esc(issueUrl('bug_report', { page: location.href, game: gameField(game), browser: browserField() }))}">🐞 ${t('reportBug')}</a>
     </div>
-    <small>${t('ghNote')}</small></div>`;
+    <small>${t('ghNote')} · <a href="privacy.html">${t('privacy')}</a></small></div>`;
   document.getElementById('langs').innerHTML = Object.keys(I18N).map(l =>
     `<button data-lang="${l}" aria-pressed="${l === lang}">${LANG_LABELS[l]}</button>`).join('');
 }
