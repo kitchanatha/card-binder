@@ -1,6 +1,6 @@
 // Card Binder service worker: makes the app installable, opens instantly, and works offline for
 // anything already viewed. Bump VERSION to drop old caches after a change to this file.
-const VERSION = 'v3';
+const VERSION = 'v4';
 const SHELL = `cb-shell-${VERSION}`, DATA = `cb-data-${VERSION}`, IMG = `cb-img-${VERSION}`;
 const SHELL_FILES = ['./', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon.svg', 'op-sets.json', 'pokemon-packs.json', 'privacy.html'];
 const MAX_IMAGES = 2500;   // ~20 KB each → roughly 50 MB at most
@@ -63,6 +63,7 @@ self.addEventListener('fetch', e => {
   const same = url.origin === self.location.origin;
 
   if (same && url.pathname.startsWith('/api/psa10')) return;            // live prices, never cached here
+  if (same && url.pathname.startsWith('/_vercel/')) return;             // visit statistics go straight to Vercel
   if (same && url.pathname.startsWith('/api/img')) return e.respondWith(cacheFirst(e, false));
   if (IMG_HOSTS.includes(url.hostname)) return e.respondWith(cacheFirst(e, true));
   if (DATA_HOSTS.includes(url.hostname)) return e.respondWith(networkFirst(e, DATA, MAX_DATA));

@@ -16,6 +16,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Card Binder">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
+<!-- visit statistics: Vercel Web Analytics (cookieless, aggregated; enable it in the Vercel dashboard) -->
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
 <style>
   :root {
     --bg: #f6f5f2; --surface: #ffffff; --surface-2: #efede8; --text: #1d1c1a; --muted: #6b675f;
@@ -1335,6 +1338,13 @@ function route() {
   renderSet(game, set, card);
 }
 window.addEventListener('hashchange', route);
+// Visit statistics: the site switches screens via #/…, which Vercel Web Analytics can't see on its own,
+// so report each screen change as a page view (the first load is counted by the script itself)
+window.addEventListener('hashchange', () => {
+  const parts = parseHash().slice(0, 3);
+  const route = ['', '[game]', '[set]', '[card]'].slice(0, parts.length + 1).join('/') || '/';
+  window.va?.('pageview', { route, path: '/' + parts.map(encodeURIComponent).join('/') });
+});
 route();
 </script>
 <script src="packsim-core.js"></script>
