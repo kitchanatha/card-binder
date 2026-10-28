@@ -7,3 +7,6 @@ secrets/
 node_modules/
 .vercel/
 .claude/
+
+# written by the Vercel build
+public/build-info.json

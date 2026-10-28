@@ -10,7 +10,8 @@
     "warm-images": "node tools/warm-op-images.js",
     "update-op-index": "node tools/build-op-index.js",
     "build-icons": "node tools/build-icons.js",
-    "test-packsim": "node tools/test-packsim.js"
+    "test-packsim": "node tools/test-packsim.js",
+    "build": "node tools/vercel-build.js"
   },
   "engines": {
     "node": ">=20"
