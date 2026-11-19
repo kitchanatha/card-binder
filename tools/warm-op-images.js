@@ -2,12 +2,14 @@
 // first-time download + resize.   node tools/warm-op-images.js [site] [--detail]
 //   site      defaults to https://card-binder-xi.vercel.app
 //   --detail  also warm the 640px detail-view size
+//   --packs=569118,569205   only these packs (any language prefix: 569… English, 550… Japanese)
 // Re-run after a new set is released. Vercel caches per region, so this warms the region
 // nearest to where it runs.
 const PUNK = 'https://raw.githubusercontent.com/buhbbl/punk-records/main';
 const args = process.argv.slice(2);
 const site = (args.find(a => a.startsWith('http')) || 'https://card-binder-xi.vercel.app').replace(/\/$/, '');
 const widths = args.includes('--detail') ? [240, 640] : [240];
+const only = args.find(a => a.startsWith('--packs='))?.slice(8).split(',').filter(Boolean);
 const CONCURRENCY = 6;
 
 const getJSON = async url => { const r = await fetch(url); if (!r.ok) throw new Error(`${r.status} ${url}`); return r.json(); };
@@ -16,7 +18,7 @@ const getJSON = async url => { const r = await fetch(url); if (!r.ok) throw new 
   const urls = new Set();
   for (const dir of ['english', 'japanese']) {
     const files = await getJSON(`https://api.github.com/repos/buhbbl/punk-records/contents/${dir}/data`);
-    for (const f of files.filter(f => f.name.endsWith('.json'))) {
+    for (const f of files.filter(f => f.name.endsWith('.json') && (!only || only.includes(f.name.replace('.json', ''))))) {
       for (const c of await getJSON(`${PUNK}/${dir}/data/${f.name}`)) if (c.img_full_url) urls.add(c.img_full_url);
     }
     console.log(`${dir}: ${urls.size} images so far`);
