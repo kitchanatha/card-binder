@@ -918,6 +918,10 @@ const GAMES = {
       });
       if (lang === 'ja') Object.entries(OP_JP_EXTRA).forEach(([id, code]) =>
         list.push({ id, code, name: tbl[code]?.name || `Pack ${id}`, date: tbl[code]?.date || null, logo: null, total: null, pack: opImg(tbl[code]?.img, 240, true) }));
+      // New sets often get English card data before Japanese: only list sets this language has data for
+      // (official.available comes from tools/scrape-op-sets.js; without it, list everything as before)
+      const have = official.available?.[lang] && new Set(official.available[lang]);
+      if (have) for (let i = list.length - 1; i >= 0; i--) if (!have.has(list[i].id)) list.splice(i, 1);
       const rank = s => /^OP/.test(s.code) ? 0 : /^(EB|PRB)/.test(s.code) ? 1 : /^ST/.test(s.code) ? 2 : 3;
       const norm = s => s.code.replace(/-/g, '');
       return list.sort((a, b) => rank(a) - rank(b) || norm(b).localeCompare(norm(a), undefined, { numeric: true }));

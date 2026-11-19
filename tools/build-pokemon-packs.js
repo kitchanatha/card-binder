@@ -54,7 +54,8 @@ async function build(lang, categoryId) {
     if (pick) { result[s.id] = { ...pick, group: group.name }; withImg++; }
   });
   console.log(`${lang}: ${sets.length} sets, ${matched} matched to TCGplayer, ${withImg} with a pack image`);
-  return result;
+  // fixed key order, so a refresh only shows real changes in git
+  return Object.fromEntries(Object.keys(result).sort().map(k => [k, result[k]]));
 }
 
 (async () => {

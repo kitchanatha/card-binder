@@ -33,7 +33,16 @@ function imageFor(html, code, base) {
     });
     if (!found) break;
   }
+  // Which packs actually have card data in each language (a new set often lands in English first);
+  // the app only lists those, so no set opens to an error
+  out.available = {};
+  for (const [lang, dir] of [['en', 'english'], ['ja', 'japanese']]) {
+    const files = await (await fetch(`https://api.github.com/repos/buhbbl/punk-records/contents/${dir}/data`, { headers: { 'User-Agent': UA } })).json();
+    if (!Array.isArray(files)) throw new Error(`could not list ${dir} data: ${JSON.stringify(files).slice(0, 120)}`);
+    out.available[lang] = files.filter(f => f.name.endsWith('.json')).map(f => f.name.replace('.json', '')).sort();
+  }
   require('fs').writeFileSync(require('path').join(__dirname, '..', 'public', 'op-sets.json'), JSON.stringify(out, null, 1));
+  console.log('card data available: en', out.available.en.length, 'packs, ja', out.available.ja.length, 'packs');
   for (const l of ['ja', 'en']) {
     const v = Object.values(out[l]);
     console.log(l, v.length, 'sets,', v.filter(x => x.img).length, 'with pack image');
